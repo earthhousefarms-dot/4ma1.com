@@ -10218,6 +10218,9 @@ ${step.visual}
                 if (tool === 'money') {
                     initializeMoney();
                 }
+                if (tool === 'moneyshop') {
+                    initializeMoneyShop();
+                }
             } else {
                 // Tool not yet implemented - show placeholder
                 showPlaceholder(tool);
@@ -11947,6 +11950,1093 @@ ${step.visual}
             newMakeChallenge();
             newChangeScenario();
             resetShopping();
+        }
+    </script>
+
+    <!-- Money Shop Tool -->
+    <div id="moneyshop-tool" class="tool-content">
+        <div class="container">
+            <div class="header">
+                <h1>🛍️ Money Shop</h1>
+                <p>Practice buying items, paying with money, and calculating change</p>
+            </div>
+
+            <div class="shop-container">
+                <div class="shop-display">
+                    <h2>🏪 4MA1 School Store</h2>
+                    <div class="shop-items">
+                        <div class="shop-item" onclick="selectShopItem(this, 'Pencil', 0.75)">
+                            <div class="product-image pencil-img">
+                                <div class="pencil-body"></div>
+                                <div class="pencil-tip"></div>
+                                <div class="pencil-eraser"></div>
+                            </div>
+                            <div class="item-name">Pencil</div>
+                            <div class="item-price">$0.75</div>
+                        </div>
+                        <div class="shop-item" onclick="selectShopItem(this, 'Notebook', 2.50)">
+                            <div class="product-image notebook-img">
+                                <div class="notebook-cover">
+                                    <div class="notebook-spiral"></div>
+                                    <div class="notebook-label">NOTES</div>
+                                </div>
+                            </div>
+                            <div class="item-name">Notebook</div>
+                            <div class="item-price">$2.50</div>
+                        </div>
+                        <div class="shop-item" onclick="selectShopItem(this, 'Calculator', 8.99)">
+                            <div class="product-image calculator-img">
+                                <div class="calc-body">
+                                    <div class="calc-screen">123</div>
+                                    <div class="calc-buttons">
+                                        <span></span><span></span><span></span>
+                                        <span></span><span></span><span></span>
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-name">Calculator</div>
+                            <div class="item-price">$8.99</div>
+                        </div>
+                        <div class="shop-item" onclick="selectShopItem(this, 'Backpack', 24.95)">
+                            <div class="product-image backpack-img">
+                                <div class="backpack-body">
+                                    <div class="backpack-pocket"></div>
+                                    <div class="backpack-straps"></div>
+                                </div>
+                            </div>
+                            <div class="item-name">Backpack</div>
+                            <div class="item-price">$24.95</div>
+                        </div>
+                        <div class="shop-item" onclick="selectShopItem(this, 'Lunch Box', 12.50)">
+                            <div class="product-image lunchbox-img">
+                                <div class="lunchbox-body">
+                                    <div class="lunchbox-handle"></div>
+                                    <div class="lunchbox-clasp"></div>
+                                </div>
+                            </div>
+                            <div class="item-name">Lunch Box</div>
+                            <div class="item-price">$12.50</div>
+                        </div>
+                        <div class="shop-item" onclick="selectShopItem(this, 'Water Bottle', 6.25)">
+                            <div class="product-image bottle-img">
+                                <div class="bottle-body">
+                                    <div class="bottle-cap"></div>
+                                    <div class="bottle-label"></div>
+                                </div>
+                            </div>
+                            <div class="item-name">Water Bottle</div>
+                            <div class="item-price">$6.25</div>
+                        </div>
+                        <div class="shop-item" onclick="selectShopItem(this, 'Eraser', 0.50)">
+                            <div class="product-image eraser-img">
+                                <div class="eraser-body">
+                                    <div class="eraser-text">ERASER</div>
+                                </div>
+                            </div>
+                            <div class="item-name">Eraser</div>
+                            <div class="item-price">$0.50</div>
+                        </div>
+                        <div class="shop-item" onclick="selectShopItem(this, 'Scissors', 3.75)">
+                            <div class="product-image scissors-img">
+                                <div class="scissors-blade1"></div>
+                                <div class="scissors-blade2"></div>
+                                <div class="scissors-handle"></div>
+                            </div>
+                            <div class="item-name">Scissors</div>
+                            <div class="item-price">$3.75</div>
+                        </div>
+                        <div class="shop-item" onclick="selectShopItem(this, 'Glue Stick', 1.99)">
+                            <div class="product-image glue-img">
+                                <div class="glue-body">
+                                    <div class="glue-cap"></div>
+                                    <div class="glue-label">GLUE</div>
+                                </div>
+                            </div>
+                            <div class="item-name">Glue Stick</div>
+                            <div class="item-price">$1.99</div>
+                        </div>
+                        <div class="shop-item" onclick="selectShopItem(this, 'Ruler', 1.25)">
+                            <div class="product-image ruler-img">
+                                <div class="ruler-body">
+                                    <div class="ruler-marks"></div>
+                                    <div class="ruler-numbers">1 2 3 4 5 6</div>
+                                </div>
+                            </div>
+                            <div class="item-name">Ruler</div>
+                            <div class="item-price">$1.25</div>
+                        </div>
+                        <div class="shop-item" onclick="selectShopItem(this, 'Markers Set', 4.50)">
+                            <div class="product-image markers-img">
+                                <div class="marker" style="background: #ff6b6b;"></div>
+                                <div class="marker" style="background: #4ecdc4;"></div>
+                                <div class="marker" style="background: #45b7d1;"></div>
+                                <div class="marker" style="background: #f7dc6f;"></div>
+                            </div>
+                            <div class="item-name">Markers Set</div>
+                            <div class="item-price">$4.50</div>
+                        </div>
+                        <div class="shop-item" onclick="selectShopItem(this, 'Crayons Box', 2.25)">
+                            <div class="product-image crayons-img">
+                                <div class="crayon-box">
+                                    <div class="crayon" style="background: #e74c3c;"></div>
+                                    <div class="crayon" style="background: #3498db;"></div>
+                                    <div class="crayon" style="background: #2ecc71;"></div>
+                                    <div class="crayon" style="background: #f39c12;"></div>
+                                </div>
+                            </div>
+                            <div class="item-name">Crayons Box</div>
+                            <div class="item-price">$2.25</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="checkout-area">
+                    <div class="shopping-cart">
+                        <h3>🛒 Shopping Cart</h3>
+                        <div id="shop-cart-items"></div>
+                        <div class="cart-total">
+                            <strong>Total: $<span id="shop-cart-total">0.00</span></strong>
+                        </div>
+                        <button class="btn clear-cart-btn" onclick="clearShopCart()">Clear Cart</button>
+                    </div>
+                    
+                    <div class="payment-section">
+                        <h3>💵 Cash Register</h3>
+                        <div class="cash-register">
+                            <p class="amount-due">Amount Due: $<span id="shop-amount-due">0.00</span></p>
+                            
+                            <div class="money-input-section">
+                                <h4>Click money to pay:</h4>
+                                <div class="bills-section">
+                                    <button class="money-btn bill-100" onclick="addShopPayment(100)">
+                                        <div class="bill-design">$100</div>
+                                    </button>
+                                    <button class="money-btn bill-50" onclick="addShopPayment(50)">
+                                        <div class="bill-design">$50</div>
+                                    </button>
+                                    <button class="money-btn bill-20" onclick="addShopPayment(20)">
+                                        <div class="bill-design">$20</div>
+                                    </button>
+                                    <button class="money-btn bill-10" onclick="addShopPayment(10)">
+                                        <div class="bill-design">$10</div>
+                                    </button>
+                                    <button class="money-btn bill-5" onclick="addShopPayment(5)">
+                                        <div class="bill-design">$5</div>
+                                    </button>
+                                    <button class="money-btn bill-1" onclick="addShopPayment(1)">
+                                        <div class="bill-design">$1</div>
+                                    </button>
+                                </div>
+                                <div class="coins-section">
+                                    <button class="money-btn coin-25" onclick="addShopPayment(0.25)">
+                                        <div class="coin-design">25¢</div>
+                                    </button>
+                                    <button class="money-btn coin-10" onclick="addShopPayment(0.10)">
+                                        <div class="coin-design">10¢</div>
+                                    </button>
+                                    <button class="money-btn coin-5" onclick="addShopPayment(0.05)">
+                                        <div class="coin-design">5¢</div>
+                                    </button>
+                                    <button class="money-btn coin-1" onclick="addShopPayment(0.01)">
+                                        <div class="coin-design">1¢</div>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-display">
+                                <p>Amount Paid: $<span id="shop-amount-paid">0.00</span></p>
+                                <div id="shop-payment-breakdown"></div>
+                            </div>
+                            
+                            <div class="register-buttons">
+                                <button class="btn pay-btn" onclick="processShopPayment()">💰 Pay Now</button>
+                                <button class="btn reset-btn" onclick="resetShopPayment()">🔄 Reset Payment</button>
+                            </div>
+                        </div>
+                        
+                        <div class="change-display" id="shop-change-display" style="display: none;">
+                            <h3>💰 Transaction Complete!</h3>
+                            <p class="receipt-text">Thank you for shopping!</p>
+                            <p class="change-amount">Your Change: $<span id="shop-change-amount">0.00</span></p>
+                            <div id="shop-change-breakdown"></div>
+                            <button class="btn new-transaction-btn" onclick="startNewShopTransaction()">🛍️ Shop Again</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Money Shop Styles with Product Images */
+        .shop-container {
+            padding: 20px;
+        }
+        
+        .shop-display {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .shop-display h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .shop-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+        }
+        
+        .shop-item {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .shop-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .shop-item.selected {
+            animation: itemPulse 0.5s;
+            background: #e8f5e9;
+        }
+        
+        @keyframes itemPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        
+        /* Product Image Styles */
+        .product-image {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 10px;
+            position: relative;
+        }
+        
+        /* Pencil */
+        .pencil-body {
+            width: 15px;
+            height: 70px;
+            background: linear-gradient(to bottom, #f4d03f, #f39c12);
+            position: absolute;
+            left: 42px;
+            top: 15px;
+            border-radius: 2px;
+        }
+        
+        .pencil-tip {
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 15px solid #333;
+            position: absolute;
+            left: 43px;
+            top: 85px;
+        }
+        
+        .pencil-eraser {
+            width: 15px;
+            height: 10px;
+            background: #ff6b9d;
+            position: absolute;
+            left: 42px;
+            top: 5px;
+            border-radius: 2px 2px 0 0;
+        }
+        
+        /* Notebook */
+        .notebook-cover {
+            width: 70px;
+            height: 90px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 5px;
+            position: relative;
+            margin: 5px auto;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .notebook-spiral {
+            position: absolute;
+            left: -5px;
+            top: 10px;
+            width: 5px;
+            height: 70px;
+            background: repeating-linear-gradient(
+                to bottom,
+                #ddd 0px,
+                #ddd 3px,
+                transparent 3px,
+                transparent 8px
+            );
+        }
+        
+        .notebook-label {
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 35px;
+            font-size: 12px;
+        }
+        
+        /* Calculator */
+        .calc-body {
+            width: 60px;
+            height: 80px;
+            background: #2c3e50;
+            border-radius: 5px;
+            padding: 8px;
+            margin: 10px auto;
+        }
+        
+        .calc-screen {
+            background: #7fcdcd;
+            color: #333;
+            padding: 5px;
+            margin-bottom: 5px;
+            text-align: right;
+            font-size: 12px;
+            border-radius: 3px;
+        }
+        
+        .calc-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
+        }
+        
+        .calc-buttons span {
+            width: 12px;
+            height: 12px;
+            background: #95a5a6;
+            border-radius: 2px;
+        }
+        
+        /* Backpack */
+        .backpack-body {
+            width: 60px;
+            height: 80px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 15px 15px 10px 10px;
+            position: relative;
+            margin: 10px auto;
+        }
+        
+        .backpack-pocket {
+            width: 40px;
+            height: 30px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 5px;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+        
+        .backpack-straps {
+            position: absolute;
+            width: 8px;
+            height: 60px;
+            background: #8b0000;
+            left: 10px;
+            top: 10px;
+            border-radius: 4px;
+            box-shadow: 32px 0 0 #8b0000;
+        }
+        
+        /* Lunch Box */
+        .lunchbox-body {
+            width: 70px;
+            height: 50px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 10px;
+            position: relative;
+            margin: 25px auto;
+        }
+        
+        .lunchbox-handle {
+            width: 30px;
+            height: 15px;
+            border: 3px solid #2c3e50;
+            border-bottom: none;
+            border-radius: 15px 15px 0 0;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+        }
+        
+        .lunchbox-clasp {
+            width: 20px;
+            height: 8px;
+            background: #f39c12;
+            border-radius: 2px;
+            position: absolute;
+            bottom: -4px;
+            left: 25px;
+        }
+        
+        /* Water Bottle */
+        .bottle-body {
+            width: 35px;
+            height: 70px;
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            border-radius: 5px 5px 10px 10px;
+            position: relative;
+            margin: 15px auto;
+        }
+        
+        .bottle-cap {
+            width: 25px;
+            height: 15px;
+            background: #2c3e50;
+            border-radius: 5px 5px 0 0;
+            position: absolute;
+            top: -15px;
+            left: 5px;
+        }
+        
+        .bottle-label {
+            width: 25px;
+            height: 30px;
+            background: rgba(255,255,255,0.3);
+            position: absolute;
+            top: 20px;
+            left: 5px;
+            border-radius: 3px;
+        }
+        
+        /* Eraser */
+        .eraser-body {
+            width: 50px;
+            height: 30px;
+            background: linear-gradient(135deg, #ff6b9d, #ee5a6f);
+            border-radius: 5px;
+            margin: 35px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .eraser-text {
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        /* Scissors */
+        .scissors-img {
+            transform: rotate(-45deg);
+        }
+        
+        .scissors-blade1, .scissors-blade2 {
+            width: 40px;
+            height: 8px;
+            background: #95a5a6;
+            border-radius: 20px 0 0 0;
+            position: absolute;
+            top: 45px;
+            left: 30px;
+        }
+        
+        .scissors-blade2 {
+            transform: rotate(30deg);
+            transform-origin: left center;
+        }
+        
+        .scissors-handle {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #e74c3c;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            left: 15px;
+        }
+        
+        /* Glue Stick */
+        .glue-body {
+            width: 30px;
+            height: 60px;
+            background: linear-gradient(to bottom, #9b59b6, #8e44ad);
+            border-radius: 15px;
+            position: relative;
+            margin: 20px auto;
+        }
+        
+        .glue-cap {
+            width: 30px;
+            height: 15px;
+            background: #f39c12;
+            border-radius: 10px 10px 0 0;
+            position: absolute;
+            top: -10px;
+        }
+        
+        .glue-label {
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 25px;
+        }
+        
+        /* Ruler */
+        .ruler-body {
+            width: 80px;
+            height: 25px;
+            background: linear-gradient(to right, #f4d03f, #f39c12);
+            border: 1px solid #333;
+            margin: 37px auto;
+            position: relative;
+        }
+        
+        .ruler-marks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: repeating-linear-gradient(
+                to right,
+                #333 0px,
+                #333 1px,
+                transparent 1px,
+                transparent 5px
+            );
+        }
+        
+        .ruler-numbers {
+            font-size: 8px;
+            text-align: center;
+            padding-top: 8px;
+        }
+        
+        /* Markers */
+        .markers-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+        
+        .marker {
+            width: 12px;
+            height: 60px;
+            border-radius: 5px 5px 10px 10px;
+            margin: 0 2px;
+            position: relative;
+        }
+        
+        .marker::before {
+            content: '';
+            width: 12px;
+            height: 10px;
+            background: #333;
+            position: absolute;
+            top: -10px;
+            border-radius: 3px 3px 0 0;
+        }
+        
+        /* Crayons */
+        .crayon-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+        
+        .crayon {
+            width: 10px;
+            height: 50px;
+            margin: 0 2px;
+            border-radius: 2px 2px 5px 5px;
+            position: relative;
+        }
+        
+        .crayon::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 10px solid inherit;
+            position: absolute;
+            top: -10px;
+        }
+        
+        /* Rest of Money Shop Styles */
+        .item-name {
+            font-weight: bold;
+            color: #333;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .item-price {
+            color: #4CAF50;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .checkout-area {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+        
+        .shopping-cart {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+        
+        .shopping-cart h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        #shop-cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            margin: 5px 0;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+        
+        .cart-item button {
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .cart-total {
+            padding-top: 15px;
+            border-top: 2px solid #333;
+            font-size: 1.3rem;
+            color: #4CAF50;
+            text-align: right;
+            margin-bottom: 15px;
+        }
+        
+        .clear-cart-btn {
+            background: #f44336;
+            color: white;
+            width: 100%;
+        }
+        
+        .payment-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 20px;
+            padding: 30px;
+        }
+        
+        .payment-section h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .cash-register {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .amount-due {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .money-input-section h4 {
+            color: #333;
+            margin: 15px 0;
+        }
+        
+        .bills-section, .coins-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .money-btn {
+            padding: 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: transparent;
+        }
+        
+        .bill-design {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: white;
+            min-width: 80px;
+        }
+        
+        .bill-100 .bill-design {
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+        }
+        
+        .bill-50 .bill-design {
+            background: linear-gradient(135deg, #388e3c, #2e7d32);
+        }
+        
+        .bill-20 .bill-design {
+            background: linear-gradient(135deg, #43a047, #388e3c);
+        }
+        
+        .bill-10 .bill-design {
+            background: linear-gradient(135deg, #66bb6a, #4caf50);
+        }
+        
+        .bill-5 .bill-design {
+            background: linear-gradient(135deg, #81c784, #66bb6a);
+        }
+        
+        .bill-1 .bill-design {
+            background: linear-gradient(135deg, #a5d6a7, #81c784);
+        }
+        
+        .coin-design {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .coin-25 .coin-design {
+            background: radial-gradient(circle, #ffd54f, #ffb300);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        .coin-10 .coin-design {
+            background: radial-gradient(circle, #ffab91, #ff6e40);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        .coin-5 .coin-design {
+            background: radial-gradient(circle, #ce93d8, #ab47bc);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        .coin-1 .coin-design {
+            background: radial-gradient(circle, #bcaaa4, #8d6e63);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        .money-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .money-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .payment-display {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .payment-display p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        #shop-payment-breakdown {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .payment-item {
+            background: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .register-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .pay-btn {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+        }
+        
+        .reset-btn {
+            background: linear-gradient(135deg, #eb3349, #f45c43);
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+        }
+        
+        .change-display {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+        }
+        
+        .change-display h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .receipt-text {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+        
+        .change-amount {
+            font-size: 2rem;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        #shop-change-breakdown {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .change-item {
+            display: inline-block;
+            background: rgba(255,255,255,0.3);
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .new-transaction-btn {
+            background: white;
+            color: #11998e;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .checkout-area {
+                grid-template-columns: 1fr;
+            }
+            
+            .shop-items {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+    </style>
+
+    <script>
+        // Money Shop Functions
+        let shopCart = [];
+        let shopPaymentAmount = 0;
+        let shopPaymentBreakdown = {};
+        
+        function selectShopItem(element, name, price) {
+            // Add item to cart
+            shopCart.push({ name, price });
+            
+            // Visual feedback
+            element.classList.add('selected');
+            setTimeout(() => element.classList.remove('selected'), 500);
+            
+            // Update cart display
+            updateShopCartDisplay();
+        }
+        
+        function updateShopCartDisplay() {
+            const cartDiv = document.getElementById('shop-cart-items');
+            const total = shopCart.reduce((sum, item) => sum + item.price, 0);
+            
+            if (shopCart.length === 0) {
+                cartDiv.innerHTML = '<p style="color: #999; text-align: center;">Your cart is empty</p>';
+            } else {
+                cartDiv.innerHTML = shopCart.map((item, index) => `
+                    <div class="cart-item">
+                        <span>${item.name} - $${item.price.toFixed(2)}</span>
+                        <button onclick="removeFromShopCart(${index})">✕</button>
+                    </div>
+                `).join('');
+            }
+            
+            document.getElementById('shop-cart-total').textContent = total.toFixed(2);
+            document.getElementById('shop-amount-due').textContent = total.toFixed(2);
+        }
+        
+        function removeFromShopCart(index) {
+            shopCart.splice(index, 1);
+            updateShopCartDisplay();
+        }
+        
+        function clearShopCart() {
+            shopCart = [];
+            updateShopCartDisplay();
+        }
+        
+        function addShopPayment(amount) {
+            shopPaymentAmount += amount;
+            
+            // Track breakdown
+            const key = amount >= 1 ? `$${amount}` : `${Math.round(amount * 100)}¢`;
+            shopPaymentBreakdown[key] = (shopPaymentBreakdown[key] || 0) + 1;
+            
+            updateShopPaymentDisplay();
+        }
+        
+        function updateShopPaymentDisplay() {
+            document.getElementById('shop-amount-paid').textContent = shopPaymentAmount.toFixed(2);
+            
+            const breakdownDiv = document.getElementById('shop-payment-breakdown');
+            if (Object.keys(shopPaymentBreakdown).length === 0) {
+                breakdownDiv.innerHTML = '';
+            } else {
+                breakdownDiv.innerHTML = Object.entries(shopPaymentBreakdown)
+                    .map(([denom, count]) => `<span class="payment-item">${count} × ${denom}</span>`)
+                    .join('');
+            }
+        }
+        
+        function resetShopPayment() {
+            shopPaymentAmount = 0;
+            shopPaymentBreakdown = {};
+            updateShopPaymentDisplay();
+        }
+        
+        function processShopPayment() {
+            const total = parseFloat(document.getElementById('shop-cart-total').textContent);
+            
+            if (total === 0) {
+                alert('Your cart is empty! Please add items to buy.');
+                return;
+            }
+            
+            if (shopPaymentAmount < total) {
+                const needed = (total - shopPaymentAmount).toFixed(2);
+                alert(`Not enough money! You need $${needed} more.`);
+                return;
+            }
+            
+            const change = shopPaymentAmount - total;
+            document.getElementById('shop-change-amount').textContent = change.toFixed(2);
+            
+            // Calculate change breakdown
+            const changeBreakdown = calculateShopChange(change);
+            document.getElementById('shop-change-breakdown').innerHTML = changeBreakdown;
+            
+            // Show change display
+            document.getElementById('shop-change-display').style.display = 'block';
+            document.querySelector('.cash-register').style.display = 'none';
+        }
+        
+        function calculateShopChange(amount) {
+            if (amount === 0) {
+                return '<div class="change-item">Exact payment - no change needed!</div>';
+            }
+            
+            const denominations = [
+                { value: 100, name: '$100' },
+                { value: 50, name: '$50' },
+                { value: 20, name: '$20' },
+                { value: 10, name: '$10' },
+                { value: 5, name: '$5' },
+                { value: 1, name: '$1' },
+                { value: 0.25, name: 'quarter' },
+                { value: 0.10, name: 'dime' },
+                { value: 0.05, name: 'nickel' },
+                { value: 0.01, name: 'penny' }
+            ];
+            
+            let remaining = Math.round(amount * 100) / 100;
+            let changeBreakdown = [];
+            
+            for (const denom of denominations) {
+                const count = Math.floor(remaining / denom.value);
+                if (count > 0) {
+                    let label = denom.name;
+                    if (denom.value < 1) {
+                        label = count > 1 && denom.name === 'penny' ? 'pennies' : 
+                                count > 1 ? denom.name + 's' : denom.name;
+                    } else if (count > 1) {
+                        label = denom.name + ' bills';
+                    }
+                    changeBreakdown.push(`<div class="change-item">${count} × ${label}</div>`);
+                    remaining = Math.round((remaining - count * denom.value) * 100) / 100;
+                }
+            }
+            
+            return changeBreakdown.join('');
+        }
+        
+        function startNewShopTransaction() {
+            shopCart = [];
+            shopPaymentAmount = 0;
+            shopPaymentBreakdown = {};
+            updateShopCartDisplay();
+            updateShopPaymentDisplay();
+            document.getElementById('shop-change-display').style.display = 'none';
+            document.querySelector('.cash-register').style.display = 'block';
+        }
+        
+        // Initialize on load
+        function initializeMoneyShop() {
+            if (document.getElementById('shop-cart-items')) {
+                updateShopCartDisplay();
+                updateShopPaymentDisplay();
+            }
         }
     </script>
 
