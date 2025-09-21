@@ -1,0 +1,294 @@
+/* Clean, Simple Styles for Arabic Learning */
+.islamic-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.islamic-header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.islamic-header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.islamic-header p {
+    margin: 10px 0 0 0;
+    opacity: 0.9;
+}
+
+/* Tab Navigation */
+.arabic-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    padding: 12px 30px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.tab-btn:hover {
+    background: #f5f5f5;
+}
+
+.tab-btn.active {
+    background: #2e7d32;
+    color: white;
+    border-color: #2e7d32;
+}
+
+/* Lesson Sections */
+.lesson-section {
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.lesson-section.active {
+    display: block;
+}
+
+.lesson-section h2 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+/* Learn Section - Number Grid */
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.number-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.number-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-color: #4caf50;
+}
+
+.number-card .western {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.number-card .arabic-large {
+    font-size: 48px;
+    color: #2e7d32;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.number-card .arabic-word {
+    font-size: 20px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.number-card .pronunciation {
+    font-size: 14px;
+    color: #999;
+    font-style: italic;
+}
+
+/* Practice Section */
+.practice-area {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.flashcard {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.flashcard-display {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.flash-arabic {
+    font-size: 80px;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.flashcard-input p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.flashcard-input input {
+    padding: 10px;
+    font-size: 20px;
+    width: 100px;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.flashcard-input button {
+    padding: 10px 20px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.feedback {
+    margin: 20px 0;
+    font-size: 18px;
+    min-height: 30px;
+}
+
+.next-btn {
+    padding: 12px 30px;
+    background: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.score-board {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.score-board h3 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+}
+
+.score-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.score-item span:last-child {
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+/* Quiz Section */
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.quiz-question {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.quiz-question p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.quiz-arabic {
+    font-size: 72px;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.option-btn {
+    padding: 20px;
+    font-size: 24px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.option-btn:hover {
+    background: #e3f2fd;
+    border-color: #2196f3;
+}
+
+.option-btn.correct {
+    background: #c8e6c9;
+    border-color: #4caf50;
+}
+
+.option-btn.wrong {
+    background: #ffcdd2;
+    border-color: #f44336;
+}
+
+.quiz-feedback {
+    min-height: 40px;
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.quiz-progress {
+    margin-top: 30px;
+}
+
+.progress-bar {
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress {
+    height: 100%;
+    background: #4caf50;
+    transition: width 0.3s;
+}
+</style>
+

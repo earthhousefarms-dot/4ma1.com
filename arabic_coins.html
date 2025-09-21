@@ -1,0 +1,613 @@
+<!-- Islamic Mathematics Tool - Gold Coins Version -->
+<div id="islamicmath-tool" class="tool-content">
+    <div class="islamic-container">
+        <div class="islamic-header">
+            <h1>🪙 Arabic Numbers Treasury</h1>
+            <p>Learn Arabic numbers through gold coins</p>
+        </div>
+        
+        <!-- Main Treasury Area -->
+        <div class="treasury-container">
+            <!-- Left Panel - Coin Collection -->
+            <div class="coin-panel">
+                <h2>Your Gold Coins</h2>
+                <div class="coin-display" id="coin-display">
+                    <!-- Coins will appear here -->
+                </div>
+                <div class="coin-controls">
+                    <button class="coin-btn add-coin" onclick="addCoin()">+ Add Gold Coin</button>
+                    <button class="coin-btn remove-coin" onclick="removeCoin()">- Remove Coin</button>
+                    <button class="coin-btn clear-coins" onclick="clearCoins()">Clear All</button>
+                </div>
+            </div>
+            
+            <!-- Right Panel - Arabic Display -->
+            <div class="arabic-panel">
+                <div class="number-displays">
+                    <div class="display-card">
+                        <h3>Western Number</h3>
+                        <div class="western-number" id="western-number">0</div>
+                    </div>
+                    
+                    <div class="display-card">
+                        <h3>Arabic Numeral</h3>
+                        <div class="arabic-numeral" id="arabic-numeral">٠</div>
+                    </div>
+                    
+                    <div class="display-card">
+                        <h3>Arabic Word</h3>
+                        <div class="arabic-word-display" id="arabic-word">صفر</div>
+                        <div class="transliteration" id="transliteration">sifr</div>
+                    </div>
+                </div>
+                
+                <!-- Quick Operations -->
+                <div class="quick-operations">
+                    <h3>Quick Operations</h3>
+                    <div class="operation-buttons">
+                        <button onclick="addCoins(5)">+5 🪙</button>
+                        <button onclick="addCoins(10)">+10 🪙</button>
+                        <button onclick="removeCoins(5)">-5 🪙</button>
+                        <button onclick="removeCoins(10)">-10 🪙</button>
+                    </div>
+                </div>
+                
+                <!-- Math Challenge -->
+                <div class="math-challenge">
+                    <h3>Coin Challenge</h3>
+                    <div class="challenge-display">
+                        <p>Collect exactly <span class="target-number" id="target-number">7</span> gold coins</p>
+                        <p class="arabic-target">Target: <span id="target-arabic">٧</span> (<span id="target-word">سبعة</span>)</p>
+                    </div>
+                    <button class="check-btn" onclick="checkChallenge()">Check Answer</button>
+                    <div class="challenge-feedback" id="challenge-feedback"></div>
+                    <button class="new-challenge-btn" onclick="newChallenge()">New Challenge</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Number Reference -->
+        <div class="number-reference">
+            <h3>Arabic Numbers Reference (0-20)</h3>
+            <div class="reference-grid">
+                <div class="ref-item" onclick="setCoins(0)">
+                    <span class="ref-western">0</span>
+                    <span class="ref-arabic">٠</span>
+                    <span class="ref-word">صفر</span>
+                    <span class="ref-trans">sifr</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(1)">
+                    <span class="ref-western">1</span>
+                    <span class="ref-arabic">١</span>
+                    <span class="ref-word">واحد</span>
+                    <span class="ref-trans">wahid</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(2)">
+                    <span class="ref-western">2</span>
+                    <span class="ref-arabic">٢</span>
+                    <span class="ref-word">اثنان</span>
+                    <span class="ref-trans">ithnan</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(3)">
+                    <span class="ref-western">3</span>
+                    <span class="ref-arabic">٣</span>
+                    <span class="ref-word">ثلاثة</span>
+                    <span class="ref-trans">thalatha</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(4)">
+                    <span class="ref-western">4</span>
+                    <span class="ref-arabic">٤</span>
+                    <span class="ref-word">أربعة</span>
+                    <span class="ref-trans">arba'a</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(5)">
+                    <span class="ref-western">5</span>
+                    <span class="ref-arabic">٥</span>
+                    <span class="ref-word">خمسة</span>
+                    <span class="ref-trans">khamsa</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(6)">
+                    <span class="ref-western">6</span>
+                    <span class="ref-arabic">٦</span>
+                    <span class="ref-word">ستة</span>
+                    <span class="ref-trans">sitta</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(7)">
+                    <span class="ref-western">7</span>
+                    <span class="ref-arabic">٧</span>
+                    <span class="ref-word">سبعة</span>
+                    <span class="ref-trans">sab'a</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(8)">
+                    <span class="ref-western">8</span>
+                    <span class="ref-arabic">٨</span>
+                    <span class="ref-word">ثمانية</span>
+                    <span class="ref-trans">thamaniya</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(9)">
+                    <span class="ref-western">9</span>
+                    <span class="ref-arabic">٩</span>
+                    <span class="ref-word">تسعة</span>
+                    <span class="ref-trans">tis'a</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(10)">
+                    <span class="ref-western">10</span>
+                    <span class="ref-arabic">١٠</span>
+                    <span class="ref-word">عشرة</span>
+                    <span class="ref-trans">ashra</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(15)">
+                    <span class="ref-western">15</span>
+                    <span class="ref-arabic">١٥</span>
+                    <span class="ref-word">خمسة عشر</span>
+                    <span class="ref-trans">khamsat ashar</span>
+                </div>
+                <div class="ref-item" onclick="setCoins(20)">
+                    <span class="ref-western">20</span>
+                    <span class="ref-arabic">٢٠</span>
+                    <span class="ref-word">عشرون</span>
+                    <span class="ref-trans">ishrun</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Gold Coin Treasury Styles */
+.treasury-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+/* Coin Panel */
+.coin-panel {
+    background: linear-gradient(135deg, #fff9e6, #ffecb3);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.coin-panel h2 {
+    color: #b8860b;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.coin-display {
+    min-height: 200px;
+    background: rgba(255,255,255,0.7);
+    border: 3px solid #ffd700;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: flex-start;
+    margin-bottom: 20px;
+    position: relative;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.gold-coin {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at 30% 30%, #ffeb3b, #ffc107);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 
+        0 2px 5px rgba(0,0,0,0.3),
+        inset 0 1px 2px rgba(255,255,255,0.5);
+    border: 2px solid #ff9800;
+    animation: coinDrop 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.gold-coin:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.gold-coin::after {
+    content: '₹';
+    position: absolute;
+    font-size: 20px;
+    color: #8b4513;
+    font-weight: bold;
+}
+
+@keyframes coinDrop {
+    from {
+        transform: translateY(-50px) rotate(180deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+    }
+}
+
+.coin-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.coin-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.add-coin {
+    background: linear-gradient(135deg, #4caf50, #8bc34a);
+    color: white;
+}
+
+.remove-coin {
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    color: white;
+}
+
+.clear-coins {
+    background: linear-gradient(135deg, #9e9e9e, #616161);
+    color: white;
+}
+
+.coin-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Arabic Panel */
+.arabic-panel {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.number-displays {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.display-card {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+.display-card h3 {
+    font-size: 14px;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.western-number {
+    font-size: 48px;
+    color: #1b5e20;
+    font-weight: bold;
+}
+
+.arabic-numeral {
+    font-size: 48px;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.arabic-word-display {
+    font-size: 24px;
+    color: #2e7d32;
+    margin-bottom: 5px;
+}
+
+.transliteration {
+    font-size: 16px;
+    color: #66bb6a;
+    font-style: italic;
+}
+
+/* Quick Operations */
+.quick-operations {
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.quick-operations h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.operation-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.operation-buttons button {
+    padding: 8px 15px;
+    background: #ffd700;
+    border: 2px solid #ffb300;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.operation-buttons button:hover {
+    background: #ffb300;
+    transform: scale(1.05);
+}
+
+/* Math Challenge */
+.math-challenge {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.math-challenge h3 {
+    color: #e65100;
+    margin-bottom: 15px;
+}
+
+.challenge-display {
+    margin-bottom: 15px;
+}
+
+.target-number {
+    font-size: 24px;
+    color: #ff6f00;
+    font-weight: bold;
+}
+
+.arabic-target {
+    color: #bf360c;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.check-btn, .new-challenge-btn {
+    padding: 10px 25px;
+    margin: 5px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.check-btn {
+    background: linear-gradient(135deg, #2196f3, #03a9f4);
+    color: white;
+}
+
+.new-challenge-btn {
+    background: linear-gradient(135deg, #9c27b0, #ba68c8);
+    color: white;
+}
+
+.challenge-feedback {
+    margin: 15px 0;
+    font-size: 18px;
+    min-height: 30px;
+}
+
+/* Number Reference */
+.number-reference {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.number-reference h3 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.reference-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.ref-item {
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.ref-item:hover {
+    border-color: #ffd700;
+    background: linear-gradient(135deg, #fff9e6, #ffecb3);
+    transform: translateY(-2px);
+}
+
+.ref-item span {
+    display: block;
+    margin: 2px 0;
+}
+
+.ref-western {
+    font-size: 20px;
+    color: #666;
+}
+
+.ref-arabic {
+    font-size: 24px;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.ref-word {
+    font-size: 14px;
+    color: #333;
+}
+
+.ref-trans {
+    font-size: 12px;
+    color: #999;
+    font-style: italic;
+}
+</style>
+
+<script>
+// Arabic Numbers Data
+const arabicNumbers = {
+    0: { numeral: '٠', word: 'صفر', transliteration: 'sifr' },
+    1: { numeral: '١', word: 'واحد', transliteration: 'wahid' },
+    2: { numeral: '٢', word: 'اثنان', transliteration: 'ithnan' },
+    3: { numeral: '٣', word: 'ثلاثة', transliteration: 'thalatha' },
+    4: { numeral: '٤', word: 'أربعة', transliteration: "arba'a" },
+    5: { numeral: '٥', word: 'خمسة', transliteration: 'khamsa' },
+    6: { numeral: '٦', word: 'ستة', transliteration: 'sitta' },
+    7: { numeral: '٧', word: 'سبعة', transliteration: "sab'a" },
+    8: { numeral: '٨', word: 'ثمانية', transliteration: 'thamaniya' },
+    9: { numeral: '٩', word: 'تسعة', transliteration: "tis'a" },
+    10: { numeral: '١٠', word: 'عشرة', transliteration: 'ashra' },
+    11: { numeral: '١١', word: 'أحد عشر', transliteration: 'ahad ashar' },
+    12: { numeral: '١٢', word: 'اثنا عشر', transliteration: 'ithna ashar' },
+    13: { numeral: '١٣', word: 'ثلاثة عشر', transliteration: 'thalatha ashar' },
+    14: { numeral: '١٤', word: 'أربعة عشر', transliteration: "arba'at ashar" },
+    15: { numeral: '١٥', word: 'خمسة عشر', transliteration: 'khamsat ashar' },
+    16: { numeral: '١٦', word: 'ستة عشر', transliteration: 'sittat ashar' },
+    17: { numeral: '١٧', word: 'سبعة عشر', transliteration: "sab'at ashar" },
+    18: { numeral: '١٨', word: 'ثمانية عشر', transliteration: 'thamaniyat ashar' },
+    19: { numeral: '١٩', word: 'تسعة عشر', transliteration: "tis'at ashar" },
+    20: { numeral: '٢٠', word: 'عشرون', transliteration: 'ishrun' }
+};
+
+let coinCount = 0;
+let targetNumber = 7;
+
+function updateDisplay() {
+    // Update coin display
+    const display = document.getElementById('coin-display');
+    display.innerHTML = '';
+    for (let i = 0; i < coinCount; i++) {
+        const coin = document.createElement('div');
+        coin.className = 'gold-coin';
+        coin.onclick = () => removeCoin();
+        display.appendChild(coin);
+    }
+    
+    // Update number displays
+    document.getElementById('western-number').textContent = coinCount;
+    
+    const arabicData = arabicNumbers[coinCount] || { 
+        numeral: convertToArabicNumeral(coinCount), 
+        word: 'عدد كبير', 
+        transliteration: 'large number' 
+    };
+    
+    document.getElementById('arabic-numeral').textContent = arabicData.numeral;
+    document.getElementById('arabic-word').textContent = arabicData.word;
+    document.getElementById('transliteration').textContent = arabicData.transliteration;
+}
+
+function convertToArabicNumeral(num) {
+    const arabicDigits = '٠١٢٣٤٥٦٧٨٩';
+    return num.toString().split('').map(d => arabicDigits[parseInt(d)]).join('');
+}
+
+function addCoin() {
+    if (coinCount < 100) {
+        coinCount++;
+        updateDisplay();
+        playSound('add');
+    }
+}
+
+function removeCoin() {
+    if (coinCount > 0) {
+        coinCount--;
+        updateDisplay();
+        playSound('remove');
+    }
+}
+
+function clearCoins() {
+    coinCount = 0;
+    updateDisplay();
+    playSound('clear');
+}
+
+function addCoins(n) {
+    coinCount = Math.min(coinCount + n, 100);
+    updateDisplay();
+    playSound('add');
+}
+
+function removeCoins(n) {
+    coinCount = Math.max(coinCount - n, 0);
+    updateDisplay();
+    playSound('remove');
+}
+
+function setCoins(n) {
+    coinCount = n;
+    updateDisplay();
+    playSound('add');
+}
+
+function newChallenge() {
+    targetNumber = Math.floor(Math.random() * 20) + 1;
+    const targetData = arabicNumbers[targetNumber];
+    document.getElementById('target-number').textContent = targetNumber;
+    document.getElementById('target-arabic').textContent = targetData.numeral;
+    document.getElementById('target-word').textContent = targetData.word;
+    document.getElementById('challenge-feedback').innerHTML = '';
+}
+
+function checkChallenge() {
+    const feedback = document.getElementById('challenge-feedback');
+    if (coinCount === targetNumber) {
+        feedback.innerHTML = '<span style="color: green;">🎉 Excellent! You collected exactly ' + targetNumber + ' coins!</span>';
+        playSound('success');
+    } else if (coinCount < targetNumber) {
+        feedback.innerHTML = '<span style="color: orange;">You need ' + (targetNumber - coinCount) + ' more coins.</span>';
+    } else {
+        feedback.innerHTML = '<span style="color: orange;">You have ' + (coinCount - targetNumber) + ' too many coins.</span>';
+    }
+}
+
+function playSound(type) {
+    // Sound effects can be added here
+    if (type === 'add') {
+        // Play coin add sound
+    } else if (type === 'remove') {
+        // Play coin remove sound
+    } else if (type === 'success') {
+        // Play success sound
+    }
+}
+
+// Initialize
+updateDisplay();
+</script>

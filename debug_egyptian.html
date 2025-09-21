@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Egyptian Tool</title>
+    <script>
+        function testEgyptian() {
+            // Try to find and activate the Egyptian tool
+            const tool = document.getElementById('egyptianmath-tool');
+            const result = document.getElementById('result');
+            
+            if (tool) {
+                result.innerHTML = 'Tool found! Classes: ' + tool.className;
+                
+                // Check if it has content
+                result.innerHTML += '<br>Tool HTML length: ' + tool.innerHTML.length;
+                result.innerHTML += '<br>Tool display style: ' + window.getComputedStyle(tool).display;
+                
+                // Try to make it visible
+                tool.style.display = 'block';
+                tool.classList.add('active');
+                
+                result.innerHTML += '<br>After activation - display: ' + window.getComputedStyle(tool).display;
+            } else {
+                result.innerHTML = 'Egyptian tool not found!';
+            }
+            
+            // List all tools
+            const allTools = document.querySelectorAll('.tool-content');
+            result.innerHTML += '<br><br>All tools found: ' + allTools.length;
+            allTools.forEach(t => {
+                result.innerHTML += '<br>' + t.id;
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Debug Egyptian Tool</h1>
+    <button onclick="testEgyptian()">Test</button>
+    <div id="result"></div>
+    
+    <iframe src="index.html" style="width: 100%; height: 500px; margin-top: 20px;"></iframe>
+</body>
+</html>

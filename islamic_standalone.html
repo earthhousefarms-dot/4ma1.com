@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Islamic Mathematics - Standalone Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .islamic-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .islamic-header {
+            background: linear-gradient(135deg, #006847, #004d34);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .islamic-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+        }
+        
+        .mode-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .mode-btn {
+            padding: 12px 20px;
+            background: white;
+            border: 2px solid #006847;
+            color: #006847;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .mode-btn.active {
+            background: #006847;
+            color: white;
+        }
+        
+        .mode-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .mode-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .story-box {
+            background: #f0f8f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .story-box h3 {
+            color: #006847;
+            margin-top: 0;
+        }
+        
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .number-card {
+            background: white;
+            border: 2px solid #006847;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .number-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,102,71,0.2);
+        }
+        
+        .arabic-big {
+            font-size: 48px;
+            color: #006847;
+            font-weight: bold;
+        }
+        
+        .our-number {
+            font-size: 24px;
+            color: #666;
+            margin: 10px 0;
+        }
+        
+        .word {
+            font-size: 14px;
+            color: #999;
+            font-style: italic;
+        }
+        
+        .game-area {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .arabic-question {
+            font-size: 72px;
+            color: #006847;
+            margin: 20px 0;
+        }
+        
+        .answer-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .answer-buttons button {
+            padding: 15px;
+            font-size: 20px;
+            background: white;
+            border: 2px solid #006847;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .answer-buttons button:hover {
+            background: #006847;
+            color: white;
+        }
+        
+        #patternCanvas {
+            border: 2px solid #006847;
+            border-radius: 10px;
+            background: white;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        .pattern-controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .pattern-controls select, .pattern-controls button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        
+        .algebra-puzzle {
+            background: #f0f8f5;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .puzzle-part {
+            font-size: 36px;
+            color: #006847;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="islamic-container">
+        <div class="islamic-header">
+            <h1>🌙 Islamic Mathematics Adventure</h1>
+            <p>Learn how Muslim scholars gave us algebra and the numbers we use today!</p>
+        </div>
+        
+        <div class="mode-selector">
+            <button class="mode-btn active" onclick="setMode('story')">📖 Story Time</button>
+            <button class="mode-btn" onclick="setMode('numbers')">🔢 Learn Arabic Numbers</button>
+            <button class="mode-btn" onclick="setMode('patterns')">🌟 Make Patterns</button>
+            <button class="mode-btn" onclick="setMode('algebra')">🧮 Simple Algebra</button>
+        </div>
+        
+        <!-- Story Mode -->
+        <div id="story-mode" class="mode-content active">
+            <h2>📖 The Story of Al-Khwarizmi</h2>
+            <div class="story-box">
+                <h3>Meet the Father of Algebra!</h3>
+                <p>🧑‍🏫 Over 1,200 years ago in Baghdad, there lived a brilliant mathematician named Al-Khwarizmi.</p>
+                <p>📚 He worked in the "House of Wisdom" - a huge library where scholars from around the world came to learn.</p>
+                <p>✨ Al-Khwarizmi invented a new type of math called "Al-Jabr" (which became the word "Algebra")!</p>
+                <p>🔢 The word "algorithm" (step-by-step instructions) comes from his name!</p>
+                <p>🌍 He also helped spread the Indian number system (0-9) that we use today.</p>
+            </div>
+            <div class="story-box">
+                <h3>🎆 Fun Facts!</h3>
+                <ul>
+                    <li>🏛️ The House of Wisdom in Baghdad was like Google and a university combined!</li>
+                    <li>💰 Al-Khwarizmi's math helped people divide inheritance fairly.</li>
+                    <li>🌎 Muslim traders spread these numbers from India to Europe.</li>
+                    <li>✏️ Before this, Europeans used Roman numerals (I, V, X) - try doing 47 × 23 in Roman numerals!</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Numbers Mode -->
+        <div id="numbers-mode" class="mode-content">
+            <h2>🔢 Learn Arabic Numbers!</h2>
+            <h3>Click on any number to learn about it!</h3>
+            <div class="number-grid">
+                <div class="number-card" onclick="sayNumber(0)">
+                    <div class="arabic-big">٠</div>
+                    <div class="our-number">0</div>
+                    <div class="word">sifr (zero)</div>
+                </div>
+                <div class="number-card" onclick="sayNumber(1)">
+                    <div class="arabic-big">١</div>
+                    <div class="our-number">1</div>
+                    <div class="word">wahid</div>
+                </div>
+                <div class="number-card" onclick="sayNumber(2)">
+                    <div class="arabic-big">٢</div>
+                    <div class="our-number">2</div>
+                    <div class="word">ithnan</div>
+                </div>
+                <div class="number-card" onclick="sayNumber(3)">
+                    <div class="arabic-big">٣</div>
+                    <div class="our-number">3</div>
+                    <div class="word">thalatha</div>
+                </div>
+                <div class="number-card" onclick="sayNumber(4)">
+                    <div class="arabic-big">٤</div>
+                    <div class="our-number">4</div>
+                    <div class="word">arba'a</div>
+                </div>
+                <div class="number-card" onclick="sayNumber(5)">
+                    <div class="arabic-big">٥</div>
+                    <div class="our-number">5</div>
+                    <div class="word">khamsa</div>
+                </div>
+                <div class="number-card" onclick="sayNumber(6)">
+                    <div class="arabic-big">٦</div>
+                    <div class="our-number">6</div>
+                    <div class="word">sitta</div>
+                </div>
+                <div class="number-card" onclick="sayNumber(7)">
+                    <div class="arabic-big">٧</div>
+                    <div class="our-number">7</div>
+                    <div class="word">sab'a</div>
+                </div>
+                <div class="number-card" onclick="sayNumber(8)">
+                    <div class="arabic-big">٨</div>
+                    <div class="our-number">8</div>
+                    <div class="word">thamaniya</div>
+                </div>
+                <div class="number-card" onclick="sayNumber(9)">
+                    <div class="arabic-big">٩</div>
+                    <div class="our-number">9</div>
+                    <div class="word">tis'a</div>
+                </div>
+            </div>
+            
+            <div class="game-area">
+                <h3>🎮 Number Matching Game</h3>
+                <p>What number is this?</p>
+                <div class="arabic-question" id="question">٥</div>
+                <div class="answer-buttons">
+                    <button onclick="checkGame(0)">0</button>
+                    <button onclick="checkGame(1)">1</button>
+                    <button onclick="checkGame(2)">2</button>
+                    <button onclick="checkGame(3)">3</button>
+                    <button onclick="checkGame(4)">4</button>
+                    <button onclick="checkGame(5)">5</button>
+                    <button onclick="checkGame(6)">6</button>
+                    <button onclick="checkGame(7)">7</button>
+                    <button onclick="checkGame(8)">8</button>
+                    <button onclick="checkGame(9)">9</button>
+                </div>
+                <div id="result"></div>
+                <p>Score: <span id="score">0</span> / <span id="attempts">0</span></p>
+            </div>
+        </div>
+        
+        <!-- Patterns Mode -->
+        <div id="patterns-mode" class="mode-content">
+            <h2>🌟 Make Beautiful Patterns!</h2>
+            <p>Muslim artists create amazing patterns using math!</p>
+            <canvas id="patternCanvas" width="400" height="400"></canvas>
+            <div class="pattern-controls">
+                <label>Shape: 
+                    <select id="shape" onchange="drawPattern()">
+                        <option value="star">⭐ Star</option>
+                        <option value="flower">🌸 Flower</option>
+                        <option value="hexagon">⬡ Hexagon</option>
+                    </select>
+                </label>
+                <label>Repeats: 
+                    <select id="repeats" onchange="drawPattern()">
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8" selected>8</option>
+                        <option value="12">12</option>
+                    </select>
+                </label>
+                <label>Color: 
+                    <select id="color" onchange="drawPattern()">
+                        <option value="green" selected>Green</option>
+                        <option value="blue">Blue</option>
+                        <option value="red">Red</option>
+                        <option value="gold">Gold</option>
+                    </select>
+                </label>
+                <button onclick="drawPattern()">✨ Create Pattern</button>
+                <button onclick="clearCanvas()">🧹 Clear</button>
+            </div>
+        </div>
+        
+        <!-- Algebra Mode -->
+        <div id="algebra-mode" class="mode-content">
+            <h2>🧮 Simple Algebra for Kids!</h2>
+            <div class="algebra-puzzle">
+                <h3>Find the Missing Number!</h3>
+                <p>What number makes this true?</p>
+                <div class="puzzle-part" id="puzzle">? + 3 = 8</div>
+                <input type="number" id="answer" min="0" max="20" style="font-size: 24px; padding: 10px; margin: 20px;">
+                <button onclick="checkAlgebra()" style="font-size: 20px; padding: 10px 20px;">Check Answer</button>
+                <div id="feedback" style="margin-top: 20px; font-size: 20px;"></div>
+                <button onclick="newPuzzle()" style="margin-top: 20px; font-size: 18px; padding: 10px 20px;">New Puzzle</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Mode switching
+        function setMode(mode) {
+            document.querySelectorAll('.mode-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.mode-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(mode + '-mode').classList.add('active');
+            event.target.classList.add('active');
+            
+            if (mode === 'patterns') {
+                drawPattern();
+            }
+        }
+        
+        // Numbers functions
+        const arabicNums = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+        const arabicWords = ['sifr', 'wahid', 'ithnan', 'thalatha', 'arba\'a', 'khamsa', 'sitta', 'sab\'a', 'thamaniya', 'tis\'a'];
+        let currentQuestion = 5;
+        let score = 0;
+        let attempts = 0;
+        
+        function sayNumber(num) {
+            alert('This is ' + arabicWords[num] + ' (' + num + ') in Arabic!');
+        }
+        
+        function checkGame(answer) {
+            attempts++;
+            if (answer === currentQuestion) {
+                score++;
+                document.getElementById('result').innerHTML = '<span style="color: green;">✓ Correct!</span>';
+                setTimeout(() => {
+                    currentQuestion = Math.floor(Math.random() * 10);
+                    document.getElementById('question').textContent = arabicNums[currentQuestion];
+                    document.getElementById('result').innerHTML = '';
+                }, 1500);
+            } else {
+                document.getElementById('result').innerHTML = '<span style="color: red;">Try again!</span>';
+            }
+            document.getElementById('score').textContent = score;
+            document.getElementById('attempts').textContent = attempts;
+        }
+        
+        // Pattern functions
+        function drawPattern() {
+            const canvas = document.getElementById('patternCanvas');
+            const ctx = canvas.getContext('2d');
+            const shape = document.getElementById('shape').value;
+            const repeats = parseInt(document.getElementById('repeats').value);
+            const color = document.getElementById('color').value;
+            
+            ctx.clearRect(0, 0, 400, 400);
+            
+            const colors = {
+                'green': '#006847',
+                'blue': '#0066CC',
+                'red': '#CC0000',
+                'gold': '#FFD700'
+            };
+            
+            ctx.fillStyle = colors[color];
+            ctx.strokeStyle = colors[color];
+            
+            const centerX = 200;
+            const centerY = 200;
+            const radius = 100;
+            
+            for (let i = 0; i < repeats; i++) {
+                const angle = (i * 2 * Math.PI) / repeats;
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.rotate(angle);
+                
+                if (shape === 'star') {
+                    drawStar(ctx, 0, -radius, 20);
+                } else if (shape === 'flower') {
+                    drawFlower(ctx, 0, -radius, 20);
+                } else {
+                    drawHexagon(ctx, 0, -radius, 20);
+                }
+                
+                ctx.restore();
+            }
+        }
+        
+        function drawStar(ctx, x, y, size) {
+            ctx.beginPath();
+            for (let i = 0; i < 5; i++) {
+                const angle = (i * 2 * Math.PI) / 5 - Math.PI / 2;
+                const innerAngle = ((i + 0.5) * 2 * Math.PI) / 5 - Math.PI / 2;
+                if (i === 0) {
+                    ctx.moveTo(x + Math.cos(angle) * size, y + Math.sin(angle) * size);
+                } else {
+                    ctx.lineTo(x + Math.cos(angle) * size, y + Math.sin(angle) * size);
+                }
+                ctx.lineTo(x + Math.cos(innerAngle) * size * 0.5, y + Math.sin(innerAngle) * size * 0.5);
+            }
+            ctx.closePath();
+            ctx.fill();
+        }
+        
+        function drawFlower(ctx, x, y, size) {
+            for (let i = 0; i < 6; i++) {
+                const angle = (i * Math.PI) / 3;
+                ctx.beginPath();
+                ctx.arc(x + Math.cos(angle) * size * 0.5, y + Math.sin(angle) * size * 0.5, size * 0.3, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function drawHexagon(ctx, x, y, size) {
+            ctx.beginPath();
+            for (let i = 0; i < 6; i++) {
+                const angle = (i * Math.PI) / 3;
+                if (i === 0) {
+                    ctx.moveTo(x + Math.cos(angle) * size, y + Math.sin(angle) * size);
+                } else {
+                    ctx.lineTo(x + Math.cos(angle) * size, y + Math.sin(angle) * size);
+                }
+            }
+            ctx.closePath();
+            ctx.fill();
+        }
+        
+        function clearCanvas() {
+            const canvas = document.getElementById('patternCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, 400, 400);
+        }
+        
+        // Algebra functions
+        const puzzles = [
+            { equation: '? + 3 = 8', answer: 5 },
+            { equation: '? + 5 = 12', answer: 7 },
+            { equation: '? - 2 = 6', answer: 8 },
+            { equation: '? + 4 = 10', answer: 6 },
+            { equation: '? - 3 = 4', answer: 7 }
+        ];
+        let currentPuzzle = puzzles[0];
+        
+        function checkAlgebra() {
+            const answer = parseInt(document.getElementById('answer').value);
+            const feedback = document.getElementById('feedback');
+            
+            if (answer === currentPuzzle.answer) {
+                feedback.innerHTML = '<span style="color: green;">✓ Excellent! That\'s right!</span>';
+                setTimeout(newPuzzle, 2000);
+            } else {
+                feedback.innerHTML = '<span style="color: orange;">Not quite. Try again!</span>';
+            }
+        }
+        
+        function newPuzzle() {
+            currentPuzzle = puzzles[Math.floor(Math.random() * puzzles.length)];
+            document.getElementById('puzzle').textContent = currentPuzzle.equation;
+            document.getElementById('answer').value = '';
+            document.getElementById('feedback').innerHTML = '';
+        }
+    </script>
+</body>
+</html>

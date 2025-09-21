@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Direct Islamic Tool Test</title>
+    <style>
+        body { padding: 20px; font-family: Arial; }
+        button { padding: 10px 20px; margin: 10px; cursor: pointer; }
+        #result { margin: 20px 0; padding: 20px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>Islamic Tool Direct Test</h1>
+    
+    <button onclick="checkTool()">1. Check if Tool Exists</button>
+    <button onclick="showTool()">2. Force Show Tool</button>
+    <button onclick="triggerSwitch()">3. Trigger switchTool Function</button>
+    <button onclick="checkInit()">4. Check Init Function</button>
+    
+    <div id="result"></div>
+    
+    <iframe id="frame" src="index.html" style="width: 100%; height: 600px; border: 2px solid #ccc;"></iframe>
+    
+    <script>
+        function getIframe() {
+            const iframe = document.getElementById('frame');
+            return {
+                doc: iframe.contentDocument || iframe.contentWindow.document,
+                win: iframe.contentWindow
+            };
+        }
+        
+        function checkTool() {
+            const {doc} = getIframe();
+            const tool = doc.getElementById('islamicmath-tool');
+            const result = document.getElementById('result');
+            
+            if (tool) {
+                const styles = window.getComputedStyle(tool);
+                result.innerHTML = `
+                    <h3>✅ Tool Found!</h3>
+                    <p><b>ID:</b> ${tool.id}</p>
+                    <p><b>Classes:</b> ${tool.className}</p>
+                    <p><b>Display:</b> ${styles.display}</p>
+                    <p><b>Has content:</b> ${tool.innerHTML.length > 0 ? 'Yes (' + tool.innerHTML.length + ' chars)' : 'No'}</p>
+                    <p><b>Has .islamic-container:</b> ${tool.querySelector('.islamic-container') ? 'Yes' : 'No'}</p>
+                `;
+            } else {
+                result.innerHTML = '<h3>❌ Tool NOT found!</h3>';
+            }
+        }
+        
+        function showTool() {
+            const {doc} = getIframe();
+            const result = document.getElementById('result');
+            
+            // Hide all tools
+            doc.querySelectorAll('.tool-content').forEach(t => {
+                t.classList.remove('active');
+                t.style.display = 'none';
+            });
+            
+            // Show Islamic tool
+            const tool = doc.getElementById('islamicmath-tool');
+            if (tool) {
+                tool.style.display = 'block';
+                tool.style.visibility = 'visible';
+                tool.style.opacity = '1';
+                tool.classList.add('active');
+                
+                result.innerHTML = '<h3>✅ Tool forced to display!</h3>';
+            } else {
+                result.innerHTML = '<h3>❌ Tool not found to display!</h3>';
+            }
+        }
+        
+        function triggerSwitch() {
+            const {win} = getIframe();
+            const result = document.getElementById('result');
+            
+            if (win.switchTool) {
+                win.switchTool('islamicmath');
+                result.innerHTML = '<h3>✅ switchTool("islamicmath") called!</h3>';
+            } else {
+                result.innerHTML = '<h3>❌ switchTool function not found!</h3>';
+            }
+        }
+        
+        function checkInit() {
+            const {win} = getIframe();
+            const result = document.getElementById('result');
+            
+            let html = '<h3>Function Check:</h3>';
+            html += '<p><b>switchTool:</b> ' + (win.switchTool ? '✅ Found' : '❌ Not found') + '</p>';
+            html += '<p><b>initIslamicMath:</b> ' + (win.initIslamicMath ? '✅ Found' : '❌ Not found') + '</p>';
+            html += '<p><b>setIslamicMode:</b> ' + (win.setIslamicMode ? '✅ Found' : '❌ Not found') + '</p>';
+            
+            if (win.initIslamicMath) {
+                win.initIslamicMath();
+                html += '<p>✅ Called initIslamicMath()</p>';
+            }
+            
+            result.innerHTML = html;
+        }
+        
+        // Auto-check when loaded
+        window.onload = function() {
+            setTimeout(checkTool, 1000);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Islamic Tool</title>
+    <script>
+        function testIslamicTool() {
+            // Load index.html in iframe first
+            const iframe = document.getElementById('mainFrame');
+            iframe.onload = function() {
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                
+                // Try to find the Islamic tool
+                const tool = iframeDoc.getElementById('islamicmath-tool');
+                const result = document.getElementById('result');
+                
+                if (tool) {
+                    result.innerHTML = '<h3>Tool Found!</h3>';
+                    result.innerHTML += 'Current classes: ' + tool.className + '<br>';
+                    result.innerHTML += 'Display style: ' + tool.style.display + '<br>';
+                    result.innerHTML += 'Computed display: ' + iframe.contentWindow.getComputedStyle(tool).display + '<br>';
+                    
+                    // Try to activate it
+                    result.innerHTML += '<br><b>Attempting to activate...</b><br>';
+                    
+                    // Call switchTool function
+                    if (iframe.contentWindow.switchTool) {
+                        iframe.contentWindow.switchTool('islamicmath');
+                        setTimeout(() => {
+                            result.innerHTML += 'After switchTool: ' + tool.className + '<br>';
+                            result.innerHTML += 'Display after switch: ' + iframe.contentWindow.getComputedStyle(tool).display + '<br>';
+                        }, 100);
+                    } else {
+                        result.innerHTML += 'switchTool function not found!<br>';
+                    }
+                    
+                    // Try direct activation
+                    tool.classList.add('active');
+                    tool.style.display = 'block';
+                    result.innerHTML += '<br>After direct activation: ' + tool.className + '<br>';
+                    result.innerHTML += 'Display after direct: ' + tool.style.display + '<br>';
+                    
+                } else {
+                    result.innerHTML = '<h3 style="color:red">Islamic tool NOT found!</h3>';
+                }
+                
+                // List all tool-content elements
+                const allTools = iframeDoc.querySelectorAll('.tool-content');
+                result.innerHTML += '<br><h3>All tools found (' + allTools.length + '):</h3>';
+                allTools.forEach(t => {
+                    result.innerHTML += t.id + ' (display: ' + iframe.contentWindow.getComputedStyle(t).display + ')<br>';
+                });
+            };
+        }
+    </script>
+</head>
+<body>
+    <h1>Islamic Tool Debugger</h1>
+    <button onclick="testIslamicTool()">Test Islamic Tool</button>
+    <div id="result" style="background: #f0f0f0; padding: 20px; margin: 20px 0; border-radius: 5px;"></div>
+    
+    <h2>Main Site:</h2>
+    <iframe id="mainFrame" src="index.html" style="width: 100%; height: 600px; border: 2px solid #333;"></iframe>
+</body>
+</html>

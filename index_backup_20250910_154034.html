@@ -5294,152 +5294,675 @@
             display: block !important;
         }
         
-        /* Arabic Numbers Learning Styles */
+        /* Rosetta-Style Arabic Learning CSS */
+        /* Rosetta-Style Arabic Learning CSS */
         
-        /* Large Number Display at Top */
-        .main-number-display {
-            background: linear-gradient(135deg, #ffd700, #ffb300);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 20px 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        /* Learning Progress */
+        .learning-progress {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .big-display-card {
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            transition: width 0.5s ease;
+        }
+        
+        .progress-stages {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            font-size: 14px;
         }
         
-        .big-western {
-            font-size: 72px;
+        .stage {
+            padding: 5px 10px;
+            background: #f5f5f5;
+            border-radius: 20px;
+            color: #999;
+            transition: all 0.3s ease;
+        }
+        
+        .stage.active {
+            background: #4caf50;
             color: white;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            transform: scale(1.1);
         }
         
-        .big-arabic {
-            font-size: 80px;
+        .stage.completed {
+            background: #8bc34a;
             color: white;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
-        .equals-sign {
-            font-size: 48px;
-            color: white;
-            font-weight: bold;
+        /* Learning Area */
+        .rosetta-learning-area {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            min-height: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         
-        .big-word-section {
+        .learning-stage {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .learning-stage.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .stage-instruction {
+            font-size: 18px;
+            color: #666;
+            text-align: center;
+            margin: 20px 0 40px;
+            font-style: italic;
+        }
+        
+        /* Stage 1: Recognition */
+        .number-presentation {
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 30px;
         }
         
-        .big-arabic-word {
-            font-size: 48px;
-            color: white;
+        .visual-number-card {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #f5f5f5, #fff);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .visual-number-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .number-visual {
+            text-align: center;
+        }
+        
+        .quantity-dots {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+        
+        .dot {
+            width: 20px;
+            height: 20px;
+            background: #ff9800;
+            border-radius: 50%;
+            animation: popIn 0.3s ease;
+        }
+        
+        @keyframes popIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+        
+        .arabic-numeral-large {
+            font-size: 120px;
+            color: #2196f3;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin: 20px 0;
+            line-height: 1;
         }
         
-        .big-transliteration {
+        .western-numeral {
+            font-size: 36px;
+            color: #999;
+        }
+        
+        .sound-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border: none;
+            background: #4caf50;
+            color: white;
+            border-radius: 50%;
             font-size: 24px;
-            color: rgba(255,255,255,0.9);
-            font-style: italic;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         
-        .arabic-tabs {
+        .sound-btn:hover {
+            background: #45a049;
+            transform: scale(1.1);
+        }
+        
+        .number-navigation {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #f5f5f5;
+            border-color: #2196f3;
+        }
+        
+        .number-selector {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .num-dot {
+            width: 12px;
+            height: 12px;
+            background: #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .num-dot:hover {
+            background: #999;
+        }
+        
+        .num-dot.active {
+            background: #2196f3;
+            transform: scale(1.3);
+        }
+        
+        /* Stage 2: Association */
+        .association-exercise {
+            text-align: center;
+        }
+        
+        .arabic-prompt {
+            font-size: 100px;
+            color: #2196f3;
+            margin: 30px 0;
+            font-weight: bold;
+        }
+        
+        .quantity-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .qty-option {
+            padding: 30px;
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .qty-option:hover {
+            border-color: #2196f3;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(33,150,243,0.3);
+        }
+        
+        .qty-option.correct {
+            border-color: #4caf50;
+            background: #e8f5e9;
+            animation: correctPulse 0.5s ease;
+        }
+        
+        .qty-option.incorrect {
+            border-color: #f44336;
+            background: #ffebee;
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes correctPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .dots-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .feedback-area {
+            margin-top: 30px;
+            font-size: 20px;
+            min-height: 40px;
+        }
+        
+        .progress-tracker {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 30px;
+            margin-top: 30px;
         }
         
-        .arabic-tabs .tab-btn {
-            padding: 12px 30px;
-            background: white;
-            border: 2px solid #ddd;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
+        .progress-tracker span {
+            font-size: 24px;
+            color: #ddd;
         }
         
-        .arabic-tabs .tab-btn:hover {
-            background: #f5f5f5;
+        .progress-tracker .completed {
+            color: #4caf50;
         }
         
-        .arabic-tabs .tab-btn.active {
-            background: #2e7d32;
-            color: white;
-            border-color: #2e7d32;
+        .progress-tracker .current {
+            color: #2196f3;
+            animation: pulse 1s infinite;
         }
         
-        .lesson-section {
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Stage 3: Context */
+        .context-scenarios {
+            position: relative;
+            min-height: 400px;
+        }
+        
+        .scenario-card {
             display: none;
+            text-align: center;
+        }
+        
+        .scenario-card.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .scenario-image {
+            margin: 30px auto;
+            width: 300px;
+            height: 200px;
+            background: #f5f5f5;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .fruit-stand {
+            text-align: center;
+        }
+        
+        .fruit-group {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        
+        .price-tag {
             background: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-size: 24px;
+        }
+        
+        .arabic-price {
+            color: #2196f3;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        
+        .currency {
+            color: #4caf50;
+            margin-left: 5px;
+        }
+        
+        .scenario-question {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+        
+        .answer-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .answer-options button {
+            padding: 15px 30px;
+            font-size: 24px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .answer-options button:hover {
+            border-color: #2196f3;
+            background: #e3f2fd;
+        }
+        
+        .scenario-navigator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        /* Stage 4: Application */
+        .number-builder {
+            text-align: center;
+        }
+        
+        .target-number {
+            margin-bottom: 40px;
+        }
+        
+        .target-display {
+            font-size: 60px;
+            color: #ff9800;
+            font-weight: bold;
+        }
+        
+        .building-area {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .dropzone {
+            width: 120px;
+            height: 120px;
+            border: 3px dashed #ddd;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .dropzone.drag-over {
+            border-color: #2196f3;
+            background: #e3f2fd;
+        }
+        
+        .place-label {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .dropped-number {
+            font-size: 48px;
+            color: #2196f3;
+            font-weight: bold;
+        }
+        
+        .number-palette {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .draggable-number {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #2196f3;
+            cursor: move;
+            transition: all 0.3s ease;
+        }
+        
+        .draggable-number:hover {
+            border-color: #2196f3;
+            transform: scale(1.1);
+        }
+        
+        .draggable-number.dragging {
+            opacity: 0.5;
+        }
+        
+        /* Stage 5: Mastery */
+        .mastery-challenges {
+            position: relative;
+        }
+        
+        .challenge-card {
+            display: none;
             padding: 30px;
+            background: #f9f9f9;
+            border-radius: 15px;
+        }
+        
+        .challenge-card.active {
+            display: block;
+        }
+        
+        .shop-items {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .shop-item {
+            text-align: center;
+        }
+        
+        .shop-item .item {
+            font-size: 50px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .item-price {
+            font-size: 20px;
+            color: #2196f3;
+            font-weight: bold;
+        }
+        
+        .challenge-question input {
+            padding: 10px 20px;
+            font-size: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            margin: 10px;
+        }
+        
+        .challenge-question button {
+            padding: 10px 30px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .mastery-progress {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .stars {
+            font-size: 40px;
+            margin: 20px 0;
+        }
+        
+        .star {
+            color: #ddd;
+            margin: 0 5px;
+        }
+        
+        .star.earned {
+            color: #ffc107;
+        }
+        
+        /* Certificate */
+        .certificate {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #fff9c4, #ffecb3);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .certificate h1 {
+            color: #f57c00;
+            margin-bottom: 20px;
+        }
+        
+        .mastered-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .mastered-numbers span {
+            font-size: 36px;
+            color: #2196f3;
+            font-weight: bold;
+        }
+        
+        .achievement-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            background: white;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .lesson-section.active {
-            display: block;
+        .badge-icon {
+            font-size: 30px;
+            margin-bottom: 5px;
         }
         
-        .numbers-grid {
+        .badge-text {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* Dashboard */
+        .learning-dashboard {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 15px;
+        }
+        
+        .dashboard-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
         }
         
-        .number-card {
+        .stat-card {
             background: white;
-            border: 2px solid #e0e0e0;
+            padding: 15px;
             border-radius: 10px;
-            padding: 20px;
             text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
         }
         
-        .number-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border-color: #4caf50;
-        }
-        
-        .number-card .western {
-            font-size: 18px;
-            color: #666;
+        .stat-label {
+            display: block;
+            font-size: 12px;
+            color: #999;
             margin-bottom: 5px;
         }
         
-        .number-card .arabic-large {
-            font-size: 48px;
-            color: #2e7d32;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        
-        .number-card .arabic-word {
+        .stat-value {
             font-size: 20px;
+            font-weight: bold;
             color: #333;
-            margin: 5px 0;
         }
         
-        .number-card .pronunciation {
-            font-size: 14px;
-            color: #999;
-            font-style: italic;
+        /* Buttons */
+        .continue-btn, .check-btn, .restart-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #4caf50, #8bc34a);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         
-        /* Islamic Content Styles */
+        .continue-btn:hover, .check-btn:hover, .restart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76,175,80,0.3);
+        }        /* Islamic Content Styles */
         .islamic-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -11452,11 +11975,10 @@ ${step.visual}
         }
         
         function switchTool(tool) {
-            console.log('=== switchTool called with:', tool);
+            console.log('Switching to tool:', tool);
             
             // Hide all tools
             document.querySelectorAll('.tool-content').forEach(content => {
-                console.log('Hiding tool:', content.id);
                 content.classList.remove('active');
             });
             
@@ -11477,20 +11999,11 @@ ${step.visual}
             }
             
             // Show selected tool
-            const toolId = tool + '-tool';
-            console.log('Looking for tool with ID:', toolId);
-            const toolElement = document.getElementById(toolId);
+            const toolElement = document.getElementById(tool + '-tool');
             console.log('Tool element found:', toolElement);
             if (toolElement) {
                 toolElement.classList.add('active');
-                console.log('Tool activated! Classes:', toolElement.className);
-                console.log('Computed display:', window.getComputedStyle(toolElement).display);
-                
-                // Special check for Islamic tool
-                if (tool === 'islamicmath') {
-                    console.log('Islamic Math tool activated!');
-                    console.log('Tool content:', toolElement.innerHTML.substring(0, 200));
-                }
+                console.log('Egyptian tool activated');
                 
                 // Initialize tools that need setup
                 if (tool === 'tt-wordproblems' && !currentWordProblem) {
@@ -14609,647 +15122,539 @@ ${step.visual}
                                     </div>
                                 </div>
                             </div>
+                            
+    <!-- Islamic Mathematics Tool -->
+    <div id="islamicmath-tool" class="tool-content">
+        <div class="islamic-container">
+            <div class="islamic-header">
+                <h1>Learn Arabic Numbers</h1>
+                <p>A visual journey through Arabic numerals</p>
+            </div>
+            
+            <!-- Learning Progress Bar -->
+            <div class="learning-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="progress-stages">
+                    <span class="stage active" data-stage="1">Recognition</span>
+                    <span class="stage" data-stage="2">Association</span>
+                    <span class="stage" data-stage="3">Context</span>
+                    <span class="stage" data-stage="4">Application</span>
+                    <span class="stage" data-stage="5">Mastery</span>
+                </div>
+            </div>
+            
+            <!-- Main Learning Area -->
+            <div class="rosetta-learning-area">
+                
+                <!-- Stage 1: Visual Recognition -->
+                <div id="stage-recognition" class="learning-stage active">
+                    <h2>Stage 1: Visual Recognition</h2>
+                    <p class="stage-instruction">Look at the number. Listen. Observe the shape.</p>
+                    
+                    <div class="number-presentation">
+                        <div class="visual-number-card" id="current-number-card">
+                            <div class="number-visual">
+                                <div class="quantity-dots" id="quantity-dots">
+                                    <span class="dot"></span>
+                                </div>
+                                <div class="arabic-numeral-large">١</div>
+                                <div class="western-numeral">1</div>
+                            </div>
+                            <button class="sound-btn" onclick="playNumberSound(1)">🔊</button>
+                        </div>
+                        
+                        <div class="number-navigation">
+                            <button onclick="previousNumber()" class="nav-btn">←</button>
+                            <div class="number-selector">
+                                <span class="num-dot active" data-num="0"></span>
+                                <span class="num-dot" data-num="1"></span>
+                                <span class="num-dot" data-num="2"></span>
+                                <span class="num-dot" data-num="3"></span>
+                                <span class="num-dot" data-num="4"></span>
+                                <span class="num-dot" data-num="5"></span>
+                                <span class="num-dot" data-num="6"></span>
+                                <span class="num-dot" data-num="7"></span>
+                                <span class="num-dot" data-num="8"></span>
+                                <span class="num-dot" data-num="9"></span>
+                            </div>
+                            <button onclick="nextNumber()" class="nav-btn">→</button>
+                        </div>
+                    </div>
+                    
+                    <button class="continue-btn" onclick="checkStageProgress()">Continue →</button>
+                </div>
+                
+                <!-- Stage 2: Association -->
+                <div id="stage-association" class="learning-stage">
+                    <h2>Stage 2: Visual Association</h2>
+                    <p class="stage-instruction">Match the Arabic numeral with the quantity</p>
+                    
+                    <div class="association-exercise">
+                        <div class="arabic-prompt">
+                            <span id="arabic-to-match">٣</span>
+                        </div>
+                        
+                        <div class="quantity-options">
+                            <div class="qty-option" onclick="checkQuantity(2)" data-qty="2">
+                                <div class="dots-container">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                            <div class="qty-option" onclick="checkQuantity(3)" data-qty="3">
+                                <div class="dots-container">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                            <div class="qty-option" onclick="checkQuantity(5)" data-qty="5">
+                                <div class="dots-container">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                            <div class="qty-option" onclick="checkQuantity(4)" data-qty="4">
+                                <div class="dots-container">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feedback-area" id="association-feedback"></div>
+                    </div>
+                    
+                    <div class="progress-tracker">
+                        <span class="completed">✓</span>
+                        <span class="completed">✓</span>
+                        <span class="current">●</span>
+                        <span>○</span>
+                        <span>○</span>
+                    </div>
+                </div>
+                
+                <!-- Stage 3: Contextual Learning -->
+                <div id="stage-context" class="learning-stage">
+                    <h2>Stage 3: Real World Context</h2>
+                    <p class="stage-instruction">See how numbers are used in daily life</p>
+                    
+                    <div class="context-scenarios">
+                        <div class="scenario-card active">
+                            <div class="scenario-image">
+                                <div class="fruit-stand">
+                                    <div class="fruit-group">
+                                        🍎🍎🍎
+                                    </div>
+                                    <div class="price-tag">
+                                        <span class="arabic-price">٣</span>
+                                        <span class="currency">﷼</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scenario-question">
+                                How many apples?
+                                <div class="answer-options">
+                                    <button onclick="checkContext(2)">٢</button>
+                                    <button onclick="checkContext(3)">٣</button>
+                                    <button onclick="checkContext(4)">٤</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="scenario-card">
+                            <div class="scenario-image">
+                                <div class="clock-display">
+                                    <svg width="150" height="150">
+                                        <circle cx="75" cy="75" r="70" fill="white" stroke="#333" stroke-width="2"/>
+                                        <line x1="75" y1="75" x2="75" y2="25" stroke="#333" stroke-width="3"/>
+                                        <line x1="75" y1="75" x2="110" y2="75" stroke="#333" stroke-width="2"/>
+                                        <text x="75" y="20" text-anchor="middle" font-size="16">١٢</text>
+                                        <text x="130" y="80" text-anchor="middle" font-size="16">٣</text>
+                                        <text x="75" y="140" text-anchor="middle" font-size="16">٦</text>
+                                        <text x="20" y="80" text-anchor="middle" font-size="16">٩</text>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="scenario-question">
+                                What time is it?
+                                <div class="answer-options">
+                                    <button onclick="checkContext('3:00')">٣:٠٠</button>
+                                    <button onclick="checkContext('12:15')">١٢:١٥</button>
+                                    <button onclick="checkContext('6:30')">٦:٣٠</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="scenario-navigator">
+                        <button onclick="previousScenario()">←</button>
+                        <span class="scenario-counter">1 / 5</span>
+                        <button onclick="nextScenario()">→</button>
+                    </div>
+                </div>
+                
+                <!-- Stage 4: Application -->
+                <div id="stage-application" class="learning-stage">
+                    <h2>Stage 4: Build Understanding</h2>
+                    <p class="stage-instruction">Construct numbers by combining digits</p>
+                    
+                    <div class="number-builder">
+                        <div class="target-number">
+                            <p>Build this number:</p>
+                            <div class="target-display">25</div>
+                        </div>
+                        
+                        <div class="building-area">
+                            <div class="tens-place dropzone" id="tens-drop">
+                                <span class="place-label">Tens</span>
+                                <div class="dropped-number"></div>
+                            </div>
+                            <div class="ones-place dropzone" id="ones-drop">
+                                <span class="place-label">Ones</span>
+                                <div class="dropped-number"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="number-palette">
+                            <div class="draggable-number" draggable="true" data-value="0">٠</div>
+                            <div class="draggable-number" draggable="true" data-value="1">١</div>
+                            <div class="draggable-number" draggable="true" data-value="2">٢</div>
+                            <div class="draggable-number" draggable="true" data-value="3">٣</div>
+                            <div class="draggable-number" draggable="true" data-value="4">٤</div>
+                            <div class="draggable-number" draggable="true" data-value="5">٥</div>
+                            <div class="draggable-number" draggable="true" data-value="6">٦</div>
+                            <div class="draggable-number" draggable="true" data-value="7">٧</div>
+                            <div class="draggable-number" draggable="true" data-value="8">٨</div>
+                            <div class="draggable-number" draggable="true" data-value="9">٩</div>
+                        </div>
+                        
+                        <button class="check-btn" onclick="checkBuiltNumber()">Check</button>
+                        <div id="builder-feedback"></div>
+                    </div>
+                </div>
+                
+                <!-- Stage 5: Mastery -->
+                <div id="stage-mastery" class="learning-stage">
+                    <h2>Stage 5: Demonstrate Mastery</h2>
+                    <p class="stage-instruction">Complete real-world tasks using Arabic numbers</p>
+                    
+                    <div class="mastery-challenges">
+                        <div class="challenge-card active">
+                            <h3>Shopping Challenge</h3>
+                            <div class="shop-items">
+                                <div class="shop-item">
+                                    <span class="item">📚</span>
+                                    <span class="item-price">١٥ ﷼</span>
+                                </div>
+                                <div class="shop-item">
+                                    <span class="item">✏️</span>
+                                    <span class="item-price">٣ ﷼</span>
+                                </div>
+                                <div class="shop-item">
+                                    <span class="item">🎨</span>
+                                    <span class="item-price">٧ ﷼</span>
+                                </div>
+                            </div>
+                            <div class="challenge-question">
+                                <p>Total cost for all items?</p>
+                                <input type="text" id="total-answer" placeholder="Type in Arabic numerals">
+                                <button onclick="checkTotal()">Submit</button>
+                            </div>
+                        </div>
+                        
+                        <div class="challenge-card">
+                            <h3>Phone Number Challenge</h3>
+                            <div class="phone-display">
+                                <p>Write this phone number in Arabic:</p>
+                                <div class="western-phone">05-234-7891</div>
+                                <input type="text" id="phone-answer" placeholder="٠٥-٢٣٤-٧٨٩١">
+                                <button onclick="checkPhone()">Submit</button>
+                            </div>
+                        </div>
+                        
+                        <div class="challenge-card">
+                            <h3>Math Challenge</h3>
+                            <div class="math-problem">
+                                <span class="problem">٨ + ٦ = ?</span>
+                                <input type="text" id="math-answer" placeholder="Answer in Arabic">
+                                <button onclick="checkMath()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mastery-progress">
+                        <div class="stars">
+                            <span class="star earned">⭐</span>
+                            <span class="star earned">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="mastery-status">2 of 3 challenges completed</p>
+                    </div>
+                </div>
+                
+                <!-- Completion Certificate -->
+                <div id="completion-certificate" class="learning-stage">
+                    <div class="certificate">
+                        <h1>🏆 Certificate of Achievement</h1>
+                        <p class="cert-text">Congratulations! You have mastered</p>
+                        <h2>Arabic Numbers 0-9</h2>
+                        <div class="mastered-numbers">
+                            <span>٠</span><span>١</span><span>٢</span><span>٣</span><span>٤</span>
+                            <span>٥</span><span>٦</span><span>٧</span><span>٨</span><span>٩</span>
+                        </div>
+                        <div class="achievement-badges">
+                            <div class="badge">
+                                <span class="badge-icon">👁️</span>
+                                <span class="badge-text">Visual Recognition</span>
+                            </div>
+                            <div class="badge">
+                                <span class="badge-icon">🔗</span>
+                                <span class="badge-text">Association</span>
+                            </div>
+                            <div class="badge">
+                                <span class="badge-icon">🌍</span>
+                                <span class="badge-text">Context</span>
+                            </div>
+                            <div class="badge">
+                                <span class="badge-icon">🔧</span>
+                                <span class="badge-text">Application</span>
+                            </div>
+                            <div class="badge">
+                                <span class="badge-icon">⭐</span>
+                                <span class="badge-text">Mastery</span>
+                            </div>
+                        </div>
+                        <button class="restart-btn" onclick="restartLearning()">Learn More Numbers →</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Learning Dashboard -->
+            <div class="learning-dashboard">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <span class="stat-label">Numbers Learned</span>
+                        <span class="stat-value" id="numbers-learned">0/10</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Current Stage</span>
+                        <span class="stat-value" id="current-stage">Recognition</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Accuracy</span>
+                        <span class="stat-value" id="accuracy">100%</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Time Spent</span>
+                        <span class="stat-value" id="time-spent">0:00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- End of Islamic Tool Modes -->
+        </div>
+    </div>                                    <td>عشرات</td>
+                                    <td>آحاد</td>
+                                </tr>
+                                <tr>
+                                    <td>alaaf</td>
+                                    <td>mi'aat</td>
+                                    <td>asharat</td>
+                                    <td>ahaad</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="number-reader">
+                            <h3>Number Reader</h3>
+                            <input type="number" id="read-number" placeholder="Enter number (1-9999)" max="9999" oninput="readArabicNumber()">
+                            <div class="reading-display">
+                                <div class="arabic-digits" id="arabic-digits">٠</div>
+                                <div class="arabic-words" id="arabic-words">-</div>
+                                <div class="english-trans" id="english-trans">-</div>
+                            </div>
+                        </div>
+                        
+                        <div class="common-numbers">
+                            <h3>Common Numbers</h3>
+                            <div class="numbers-grid">
+                                <div class="num-card" onclick="showNumber(20)">
+                                    <div>20</div>
+                                    <div>٢٠</div>
+                                    <div>عشرون</div>
+                                    <div>ishrun</div>
+                                </div>
+                                <div class="num-card" onclick="showNumber(50)">
+                                    <div>50</div>
+                                    <div>٥٠</div>
+                                    <div>خمسون</div>
+                                    <div>khamsun</div>
+                                </div>
+                                <div class="num-card" onclick="showNumber(100)">
+                                    <div>100</div>
+                                    <div>١٠٠</div>
+                                    <div>مائة</div>
+                                    <div>mi'a</div>
+                                </div>
+                                <div class="num-card" onclick="showNumber(1000)">
+                                    <div>1000</div>
+                                    <div>١٠٠٠</div>
+                                    <div>ألف</div>
+                                    <div>alf</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Money Mode -->
+                <div id="money-mode" class="arabic-mode-content">
+                    <h2>Arabic Money & Currency</h2>
+                    <div class="money-container">
+                        <div class="currency-info">
+                            <h3>Common Arab Currencies</h3>
+                            <table class="currency-table">
+                                <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>Currency</th>
+                                        <th>Arabic</th>
+                                        <th>Symbol</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Saudi Arabia</td>
+                                        <td>Riyal</td>
+                                        <td>ريال</td>
+                                        <td>﷼</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UAE</td>
+                                        <td>Dirham</td>
+                                        <td>درهم</td>
+                                        <td>د.إ</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Egypt</td>
+                                        <td>Pound</td>
+                                        <td>جنيه</td>
+                                        <td>£E</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jordan</td>
+                                        <td>Dinar</td>
+                                        <td>دينار</td>
+                                        <td>JD</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="money-practice">
+                            <h3>Money Calculator</h3>
+                            <div class="price-display">
+                                <label>Price in Riyals:</label>
+                                <input type="number" id="price-input" placeholder="Enter price" oninput="convertPrice()">
+                                <div class="price-arabic">
+                                    <span id="price-arabic">٠</span> <span>﷼</span>
+                                </div>
+                                <div class="price-words" id="price-words">صفر ريال</div>
+                            </div>
+                            
+                            <div class="money-problems">
+                                <h4>Shopping Practice</h4>
+                                <div class="shopping-item">
+                                    <span class="item-icon">🍎</span>
+                                    <div>التفاح (Apples)</div>
+                                    <div class="price">٥ ﷼</div>
+                                </div>
+                                <div class="shopping-item">
+                                    <span class="item-icon">📚</span>
+                                    <div>كتاب (Book)</div>
+                                    <div class="price">٢٥ ﷼</div>
+                                </div>
+                                <div class="shopping-item">
+                                    <span class="item-icon">🥤</span>
+                                    <div>عصير (Juice)</div>
+                                    <div class="price">٣ ﷼</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Practice Mode -->
+                <div id="practice-mode" class="arabic-mode-content">
+                    <h2>Practice Arabic Numbers</h2>
+                    <div class="practice-container">
+                        <div class="practice-selector">
+                            <button class="practice-btn active" onclick="setPracticeType('match')">Number Matching</button>
+                            <button class="practice-btn" onclick="setPracticeType('write')">Write Numbers</button>
+                            <button class="practice-btn" onclick="setPracticeType('calculate')">Calculate</button>
+                        </div>
+                        
+                        <div id="match-practice" class="practice-type active">
+                            <h3>Match the Numbers</h3>
+                            <div class="match-game">
+                                <div class="match-question">
+                                    <span class="arabic-large" id="match-arabic">٤٧</span>
+                                </div>
+                                <div class="match-options">
+                                    <button onclick="checkMatch(38)">38</button>
+                                    <button onclick="checkMatch(47)">47</button>
+                                    <button onclick="checkMatch(74)">74</button>
+                                    <button onclick="checkMatch(84)">84</button>
+                                </div>
+                                <div id="match-feedback"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="write-practice" class="practice-type">
+                            <h3>Write in Arabic</h3>
+                            <div class="write-game">
+                                <div class="write-prompt">
+                                    Write <span id="write-number">25</span> in Arabic numerals:
+                                </div>
+                                <input type="text" id="write-input" placeholder="Type Arabic numbers">
+                                <button onclick="checkWrite()">Check</button>
+                                <div id="write-feedback"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="calculate-practice" class="practice-type">
+                            <h3>Calculate in Arabic</h3>
+                            <div class="calc-game">
+                                <div class="calc-equation">
+                                    <span>٨ + ٦ = </span>
+                                    <input type="number" id="calc-answer" placeholder="?">
+                                </div>
+                                <button onclick="checkCalc()">Check</button>
+                                <div id="calc-feedback"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="score-tracker">
+                            <h4>Your Progress</h4>
+                            <div class="score-display">
+                                Score: <span id="practice-score">0</span> / <span id="practice-total">0</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    
-<!-- Islamic Mathematics Tool - Gold Coins Version -->
-<div id="islamicmath-tool" class="tool-content">
-    <div class="islamic-container">
-        <div class="islamic-header">
-            <h1>🪙 Arabic Numbers Treasury</h1>
-            <p>Learn Arabic numbers through gold coins</p>
-        </div>
-        
-        <!-- Large Number Display at Top -->
-        <div class="main-number-display">
-            <div class="big-display-card">
-                <div class="big-western" id="big-western">0</div>
-                <div class="equals-sign">=</div>
-                <div class="big-arabic" id="big-arabic">٠</div>
-                <div class="equals-sign">=</div>
-                <div class="big-word-section">
-                    <div class="big-arabic-word" id="big-arabic-word">صفر</div>
-                    <div class="big-transliteration" id="big-transliteration">sifr</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Main Treasury Area -->
-        <div class="treasury-container">
-            <!-- Left Panel - Coin Collection -->
-            <div class="coin-panel">
-                <h2>Your Gold Coins</h2>
-                <div class="coin-display" id="coin-display">
-                    <!-- Coins will appear here -->
-                </div>
-                <div class="coin-controls">
-                    <button class="coin-btn add-coin" onclick="addCoin()">+ Add Gold Coin</button>
-                    <button class="coin-btn remove-coin" onclick="removeCoin()">- Remove Coin</button>
-                    <button class="coin-btn clear-coins" onclick="clearCoins()">Clear All</button>
-                </div>
-            </div>
             
-            <!-- Right Panel - Arabic Display -->
-            <div class="arabic-panel">
-                <div class="number-displays">
-                    <div class="display-card">
-                        <h3>Western Number</h3>
-                        <div class="western-number" id="western-number">0</div>
-                    </div>
-                    
-                    <div class="display-card">
-                        <h3>Arabic Numeral</h3>
-                        <div class="arabic-numeral" id="arabic-numeral">٠</div>
-                    </div>
-                    
-                    <div class="display-card">
-                        <h3>Arabic Word</h3>
-                        <div class="arabic-word-display" id="arabic-word">صفر</div>
-                        <div class="transliteration" id="transliteration">sifr</div>
-                    </div>
-                </div>
-                
-                <!-- Quick Operations -->
-                <div class="quick-operations">
-                    <h3>Quick Operations</h3>
-                    <div class="operation-buttons">
-                        <button onclick="addCoins(5)">+5 🪙</button>
-                        <button onclick="addCoins(10)">+10 🪙</button>
-                        <button onclick="removeCoins(5)">-5 🪙</button>
-                        <button onclick="removeCoins(10)">-10 🪙</button>
-                    </div>
-                </div>
-                
-                <!-- Math Challenge -->
-                <div class="math-challenge">
-                    <h3>Coin Challenge</h3>
-                    <div class="challenge-display">
-                        <p>Collect exactly <span class="target-number" id="target-number">7</span> gold coins</p>
-                        <p class="arabic-target">Target: <span id="target-arabic">٧</span> (<span id="target-word">سبعة</span>)</p>
-                    </div>
-                    <button class="check-btn" onclick="checkChallenge()">Check Answer</button>
-                    <div class="challenge-feedback" id="challenge-feedback"></div>
-                    <button class="new-challenge-btn" onclick="newChallenge()">New Challenge</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Number Reference -->
-        <div class="number-reference">
-            <h3>Arabic Numbers Reference (0-20)</h3>
-            <div class="reference-grid">
-                <div class="ref-item" onclick="setCoins(0)">
-                    <span class="ref-western">0</span>
-                    <span class="ref-arabic">٠</span>
-                    <span class="ref-word">صفر</span>
-                    <span class="ref-trans">sifr</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(1)">
-                    <span class="ref-western">1</span>
-                    <span class="ref-arabic">١</span>
-                    <span class="ref-word">واحد</span>
-                    <span class="ref-trans">wahid</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(2)">
-                    <span class="ref-western">2</span>
-                    <span class="ref-arabic">٢</span>
-                    <span class="ref-word">اثنان</span>
-                    <span class="ref-trans">ithnan</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(3)">
-                    <span class="ref-western">3</span>
-                    <span class="ref-arabic">٣</span>
-                    <span class="ref-word">ثلاثة</span>
-                    <span class="ref-trans">thalatha</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(4)">
-                    <span class="ref-western">4</span>
-                    <span class="ref-arabic">٤</span>
-                    <span class="ref-word">أربعة</span>
-                    <span class="ref-trans">arba'a</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(5)">
-                    <span class="ref-western">5</span>
-                    <span class="ref-arabic">٥</span>
-                    <span class="ref-word">خمسة</span>
-                    <span class="ref-trans">khamsa</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(6)">
-                    <span class="ref-western">6</span>
-                    <span class="ref-arabic">٦</span>
-                    <span class="ref-word">ستة</span>
-                    <span class="ref-trans">sitta</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(7)">
-                    <span class="ref-western">7</span>
-                    <span class="ref-arabic">٧</span>
-                    <span class="ref-word">سبعة</span>
-                    <span class="ref-trans">sab'a</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(8)">
-                    <span class="ref-western">8</span>
-                    <span class="ref-arabic">٨</span>
-                    <span class="ref-word">ثمانية</span>
-                    <span class="ref-trans">thamaniya</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(9)">
-                    <span class="ref-western">9</span>
-                    <span class="ref-arabic">٩</span>
-                    <span class="ref-word">تسعة</span>
-                    <span class="ref-trans">tis'a</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(10)">
-                    <span class="ref-western">10</span>
-                    <span class="ref-arabic">١٠</span>
-                    <span class="ref-word">عشرة</span>
-                    <span class="ref-trans">ashra</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(15)">
-                    <span class="ref-western">15</span>
-                    <span class="ref-arabic">١٥</span>
-                    <span class="ref-word">خمسة عشر</span>
-                    <span class="ref-trans">khamsat ashar</span>
-                </div>
-                <div class="ref-item" onclick="setCoins(20)">
-                    <span class="ref-western">20</span>
-                    <span class="ref-arabic">٢٠</span>
-                    <span class="ref-word">عشرون</span>
-                    <span class="ref-trans">ishrun</span>
-                </div>
-            </div>
+            <!-- End of Islamic Tool Modes -->
         </div>
     </div>
-</div>
-
-<style>
-/* Gold Coin Treasury Styles */
-.treasury-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin: 30px 0;
-}
-
-/* Coin Panel */
-.coin-panel {
-    background: linear-gradient(135deg, #fff9e6, #ffecb3);
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.coin-panel h2 {
-    color: #b8860b;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.coin-display {
-    min-height: 200px;
-    background: rgba(255,255,255,0.7);
-    border: 3px solid #ffd700;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-content: flex-start;
-    margin-bottom: 20px;
-    position: relative;
-    overflow-y: auto;
-    max-height: 300px;
-}
-
-.gold-coin {
-    width: 50px;
-    height: 50px;
-    background: radial-gradient(circle at 30% 30%, #ffeb3b, #ffc107);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 
-        0 2px 5px rgba(0,0,0,0.3),
-        inset 0 1px 2px rgba(255,255,255,0.5);
-    border: 2px solid #ff9800;
-    animation: coinDrop 0.3s ease;
-    cursor: pointer;
-    transition: transform 0.2s;
-    position: relative;
-}
-
-.gold-coin:hover {
-    transform: scale(1.1) rotate(10deg);
-}
-
-.gold-coin::after {
-    content: '₹';
-    position: absolute;
-    font-size: 20px;
-    color: #8b4513;
-    font-weight: bold;
-}
-
-@keyframes coinDrop {
-    from {
-        transform: translateY(-50px) rotate(180deg);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0) rotate(0);
-        opacity: 1;
-    }
-}
-
-.coin-controls {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.coin-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: bold;
-}
-
-.add-coin {
-    background: linear-gradient(135deg, #4caf50, #8bc34a);
-    color: white;
-}
-
-.remove-coin {
-    background: linear-gradient(135deg, #ff9800, #ff5722);
-    color: white;
-}
-
-.clear-coins {
-    background: linear-gradient(135deg, #9e9e9e, #616161);
-    color: white;
-}
-
-.coin-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-/* Arabic Panel */
-.arabic-panel {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.number-displays {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.display-card {
-    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-}
-
-.display-card h3 {
-    font-size: 14px;
-    color: #2e7d32;
-    margin-bottom: 10px;
-}
-
-.western-number {
-    font-size: 48px;
-    color: #1b5e20;
-    font-weight: bold;
-}
-
-.arabic-numeral {
-    font-size: 48px;
-    color: #2e7d32;
-    font-weight: bold;
-}
-
-.arabic-word-display {
-    font-size: 24px;
-    color: #2e7d32;
-    margin-bottom: 5px;
-}
-
-.transliteration {
-    font-size: 16px;
-    color: #66bb6a;
-    font-style: italic;
-}
-
-/* Quick Operations */
-.quick-operations {
-    background: #f5f5f5;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-.quick-operations h3 {
-    color: #333;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-.operation-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.operation-buttons button {
-    padding: 8px 15px;
-    background: #ffd700;
-    border: 2px solid #ffb300;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s;
-}
-
-.operation-buttons button:hover {
-    background: #ffb300;
-    transform: scale(1.05);
-}
-
-/* Math Challenge */
-.math-challenge {
-    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-}
-
-.math-challenge h3 {
-    color: #e65100;
-    margin-bottom: 15px;
-}
-
-.challenge-display {
-    margin-bottom: 15px;
-}
-
-.target-number {
-    font-size: 24px;
-    color: #ff6f00;
-    font-weight: bold;
-}
-
-.arabic-target {
-    color: #bf360c;
-    margin-top: 10px;
-    font-size: 18px;
-}
-
-.check-btn, .new-challenge-btn {
-    padding: 10px 25px;
-    margin: 5px;
-    border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.check-btn {
-    background: linear-gradient(135deg, #2196f3, #03a9f4);
-    color: white;
-}
-
-.new-challenge-btn {
-    background: linear-gradient(135deg, #9c27b0, #ba68c8);
-    color: white;
-}
-
-.challenge-feedback {
-    margin: 15px 0;
-    font-size: 18px;
-    min-height: 30px;
-}
-
-/* Number Reference */
-.number-reference {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    margin-top: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.number-reference h3 {
-    color: #2e7d32;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.reference-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-}
-
-.ref-item {
-    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    border: 2px solid transparent;
-}
-
-.ref-item:hover {
-    border-color: #ffd700;
-    background: linear-gradient(135deg, #fff9e6, #ffecb3);
-    transform: translateY(-2px);
-}
-
-.ref-item span {
-    display: block;
-    margin: 2px 0;
-}
-
-.ref-western {
-    font-size: 20px;
-    color: #666;
-}
-
-.ref-arabic {
-    font-size: 24px;
-    color: #2e7d32;
-    font-weight: bold;
-}
-
-.ref-word {
-    font-size: 14px;
-    color: #333;
-}
-
-.ref-trans {
-    font-size: 12px;
-    color: #999;
-    font-style: italic;
-}
-</style>
-
-<script>
-// Arabic Numbers Data
-const arabicNumbers = {
-    0: { numeral: '٠', word: 'صفر', transliteration: 'sifr' },
-    1: { numeral: '١', word: 'واحد', transliteration: 'wahid' },
-    2: { numeral: '٢', word: 'اثنان', transliteration: 'ithnan' },
-    3: { numeral: '٣', word: 'ثلاثة', transliteration: 'thalatha' },
-    4: { numeral: '٤', word: 'أربعة', transliteration: "arba'a" },
-    5: { numeral: '٥', word: 'خمسة', transliteration: 'khamsa' },
-    6: { numeral: '٦', word: 'ستة', transliteration: 'sitta' },
-    7: { numeral: '٧', word: 'سبعة', transliteration: "sab'a" },
-    8: { numeral: '٨', word: 'ثمانية', transliteration: 'thamaniya' },
-    9: { numeral: '٩', word: 'تسعة', transliteration: "tis'a" },
-    10: { numeral: '١٠', word: 'عشرة', transliteration: 'ashra' },
-    11: { numeral: '١١', word: 'أحد عشر', transliteration: 'ahad ashar' },
-    12: { numeral: '١٢', word: 'اثنا عشر', transliteration: 'ithna ashar' },
-    13: { numeral: '١٣', word: 'ثلاثة عشر', transliteration: 'thalatha ashar' },
-    14: { numeral: '١٤', word: 'أربعة عشر', transliteration: "arba'at ashar" },
-    15: { numeral: '١٥', word: 'خمسة عشر', transliteration: 'khamsat ashar' },
-    16: { numeral: '١٦', word: 'ستة عشر', transliteration: 'sittat ashar' },
-    17: { numeral: '١٧', word: 'سبعة عشر', transliteration: "sab'at ashar" },
-    18: { numeral: '١٨', word: 'ثمانية عشر', transliteration: 'thamaniyat ashar' },
-    19: { numeral: '١٩', word: 'تسعة عشر', transliteration: "tis'at ashar" },
-    20: { numeral: '٢٠', word: 'عشرون', transliteration: 'ishrun' }
-};
-
-let coinCount = 0;
-let targetNumber = 7;
-
-function updateDisplay() {
-    // Update coin display
-    const display = document.getElementById('coin-display');
-    display.innerHTML = '';
-    for (let i = 0; i < coinCount; i++) {
-        const coin = document.createElement('div');
-        coin.className = 'gold-coin';
-        coin.onclick = () => removeCoin();
-        display.appendChild(coin);
-    }
-    
-    // Update number displays
-    document.getElementById('western-number').textContent = coinCount;
-    
-    const arabicData = arabicNumbers[coinCount] || { 
-        numeral: convertToArabicNumeral(coinCount), 
-        word: 'عدد كبير', 
-        transliteration: 'large number' 
-    };
-    
-    document.getElementById('arabic-numeral').textContent = arabicData.numeral;
-    document.getElementById('arabic-word').textContent = arabicData.word;
-    document.getElementById('transliteration').textContent = arabicData.transliteration;
-    
-    // Update the big display at the top
-    document.getElementById('big-western').textContent = coinCount;
-    document.getElementById('big-arabic').textContent = arabicData.numeral;
-    document.getElementById('big-arabic-word').textContent = arabicData.word;
-    document.getElementById('big-transliteration').textContent = arabicData.transliteration;
-}
-
-function convertToArabicNumeral(num) {
-    const arabicDigits = '٠١٢٣٤٥٦٧٨٩';
-    return num.toString().split('').map(d => arabicDigits[parseInt(d)]).join('');
-}
-
-function addCoin() {
-    if (coinCount < 100) {
-        coinCount++;
-        updateDisplay();
-        playSound('add');
-    }
-}
-
-function removeCoin() {
-    if (coinCount > 0) {
-        coinCount--;
-        updateDisplay();
-        playSound('remove');
-    }
-}
-
-function clearCoins() {
-    coinCount = 0;
-    updateDisplay();
-    playSound('clear');
-}
-
-function addCoins(n) {
-    coinCount = Math.min(coinCount + n, 100);
-    updateDisplay();
-    playSound('add');
-}
-
-function removeCoins(n) {
-    coinCount = Math.max(coinCount - n, 0);
-    updateDisplay();
-    playSound('remove');
-}
-
-function setCoins(n) {
-    coinCount = n;
-    updateDisplay();
-    playSound('add');
-}
-
-function newChallenge() {
-    targetNumber = Math.floor(Math.random() * 20) + 1;
-    const targetData = arabicNumbers[targetNumber];
-    document.getElementById('target-number').textContent = targetNumber;
-    document.getElementById('target-arabic').textContent = targetData.numeral;
-    document.getElementById('target-word').textContent = targetData.word;
-    document.getElementById('challenge-feedback').innerHTML = '';
-}
-
-function checkChallenge() {
-    const feedback = document.getElementById('challenge-feedback');
-    if (coinCount === targetNumber) {
-        feedback.innerHTML = '<span style="color: green;">🎉 Excellent! You collected exactly ' + targetNumber + ' coins!</span>';
-        playSound('success');
-    } else if (coinCount < targetNumber) {
-        feedback.innerHTML = '<span style="color: orange;">You need ' + (targetNumber - coinCount) + ' more coins.</span>';
-    } else {
-        feedback.innerHTML = '<span style="color: orange;">You have ' + (coinCount - targetNumber) + ' too many coins.</span>';
-    }
-}
-
-function playSound(type) {
-    // Sound effects can be added here
-    if (type === 'add') {
-        // Play coin add sound
-    } else if (type === 'remove') {
-        // Play coin remove sound
-    } else if (type === 'success') {
-        // Play success sound
-    }
-}
-
-// Initialize
-updateDisplay();
-</script>    
-    <!-- Decimals Tool -->
     <div id="decimals-tool" class="tool-content">
         <div class="container">
             <div class="header">

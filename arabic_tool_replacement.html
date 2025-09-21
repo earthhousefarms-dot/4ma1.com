@@ -1,0 +1,397 @@
+    <!-- Islamic Mathematics Tool -->
+    <div id="islamicmath-tool" class="tool-content">
+        <div class="islamic-container">
+            <div class="islamic-header">
+                <h1>Arabic Numbers & Mathematics</h1>
+                <p>Learn numbers, operations, and counting in Arabic</p>
+            </div>
+            
+            <!-- Number Navigation Tabs -->
+            <div class="arabic-nav-tabs">
+                <button class="arabic-tab active" onclick="setArabicMode('digits')">Arabic Digits</button>
+                <button class="arabic-tab" onclick="setArabicMode('operations')">Math Operations</button>
+                <button class="arabic-tab" onclick="setArabicMode('reading')">Reading Numbers</button>
+                <button class="arabic-tab" onclick="setArabicMode('money')">Money & Currency</button>
+                <button class="arabic-tab" onclick="setArabicMode('practice')">Practice</button>
+            </div>
+            
+            <!-- Main Content Area -->
+            <div class="arabic-content-area">
+                <!-- Arabic Digits Mode -->
+                <div id="digits-mode" class="arabic-mode-content active">
+                    <h2>Arabic-Indic Numerals</h2>
+                    <div class="digits-container">
+                        <div class="number-comparison">
+                            <h3>Eastern Arabic vs Western Arabic</h3>
+                            <table class="number-table">
+                                <thead>
+                                    <tr>
+                                        <th>Western</th>
+                                        <th>Eastern Arabic</th>
+                                        <th>Arabic Name</th>
+                                        <th>Pronunciation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr onclick="playArabicNumber(0)">
+                                        <td>0</td>
+                                        <td class="arabic-num">٠</td>
+                                        <td>صفر</td>
+                                        <td>sifr</td>
+                                    </tr>
+                                    <tr onclick="playArabicNumber(1)">
+                                        <td>1</td>
+                                        <td class="arabic-num">١</td>
+                                        <td>واحد</td>
+                                        <td>wahid</td>
+                                    </tr>
+                                    <tr onclick="playArabicNumber(2)">
+                                        <td>2</td>
+                                        <td class="arabic-num">٢</td>
+                                        <td>اثنان</td>
+                                        <td>ithnan</td>
+                                    </tr>
+                                    <tr onclick="playArabicNumber(3)">
+                                        <td>3</td>
+                                        <td class="arabic-num">٣</td>
+                                        <td>ثلاثة</td>
+                                        <td>thalatha</td>
+                                    </tr>
+                                    <tr onclick="playArabicNumber(4)">
+                                        <td>4</td>
+                                        <td class="arabic-num">٤</td>
+                                        <td>أربعة</td>
+                                        <td>arba'a</td>
+                                    </tr>
+                                    <tr onclick="playArabicNumber(5)">
+                                        <td>5</td>
+                                        <td class="arabic-num">٥</td>
+                                        <td>خمسة</td>
+                                        <td>khamsa</td>
+                                    </tr>
+                                    <tr onclick="playArabicNumber(6)">
+                                        <td>6</td>
+                                        <td class="arabic-num">٦</td>
+                                        <td>ستة</td>
+                                        <td>sitta</td>
+                                    </tr>
+                                    <tr onclick="playArabicNumber(7)">
+                                        <td>7</td>
+                                        <td class="arabic-num">٧</td>
+                                        <td>سبعة</td>
+                                        <td>sab'a</td>
+                                    </tr>
+                                    <tr onclick="playArabicNumber(8)">
+                                        <td>8</td>
+                                        <td class="arabic-num">٨</td>
+                                        <td>ثمانية</td>
+                                        <td>thamaniya</td>
+                                    </tr>
+                                    <tr onclick="playArabicNumber(9)">
+                                        <td>9</td>
+                                        <td class="arabic-num">٩</td>
+                                        <td>تسعة</td>
+                                        <td>tis'a</td>
+                                    </tr>
+                                    <tr onclick="playArabicNumber(10)">
+                                        <td>10</td>
+                                        <td class="arabic-num">١٠</td>
+                                        <td>عشرة</td>
+                                        <td>ashra</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="number-converter">
+                            <h3>Number Converter</h3>
+                            <input type="number" id="western-input" placeholder="Enter a number" oninput="convertToArabic()">
+                            <div class="arrow-down">↓</div>
+                            <div class="arabic-output" id="arabic-output">٠</div>
+                            <div class="arabic-text" id="arabic-text">صفر</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operations Mode -->
+                <div id="operations-mode" class="arabic-mode-content">
+                    <h2>Mathematical Operations in Arabic</h2>
+                    <div class="operations-container">
+                        <div class="operations-table">
+                            <h3>Operation Symbols & Names</h3>
+                            <table class="ops-table">
+                                <thead>
+                                    <tr>
+                                        <th>Operation</th>
+                                        <th>Symbol</th>
+                                        <th>Arabic Name</th>
+                                        <th>Pronunciation</th>
+                                        <th>Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Addition</td>
+                                        <td class="op-symbol">+</td>
+                                        <td>جمع</td>
+                                        <td>jam'</td>
+                                        <td>٣ + ٢ = ٥</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Subtraction</td>
+                                        <td class="op-symbol">−</td>
+                                        <td>طرح</td>
+                                        <td>tarh</td>
+                                        <td>٧ − ٤ = ٣</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Multiplication</td>
+                                        <td class="op-symbol">×</td>
+                                        <td>ضرب</td>
+                                        <td>darb</td>
+                                        <td>٤ × ٣ = ١٢</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Division</td>
+                                        <td class="op-symbol">÷</td>
+                                        <td>قسمة</td>
+                                        <td>qisma</td>
+                                        <td>٨ ÷ ٢ = ٤</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Equals</td>
+                                        <td class="op-symbol">=</td>
+                                        <td>يساوي</td>
+                                        <td>yusawi</td>
+                                        <td>٢ + ٢ = ٤</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="operation-practice">
+                            <h3>Practice Operations</h3>
+                            <div class="equation-display">
+                                <span class="arabic-num" id="num1">٥</span>
+                                <span class="op-symbol" id="operation">+</span>
+                                <span class="arabic-num" id="num2">٣</span>
+                                <span class="op-symbol">=</span>
+                                <input type="number" id="answer-input" placeholder="?">
+                                <button onclick="checkOperation()">Check</button>
+                            </div>
+                            <div id="operation-feedback"></div>
+                            <button onclick="newOperation()">New Problem</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reading Numbers Mode -->
+                <div id="reading-mode" class="arabic-mode-content">
+                    <h2>Reading Numbers in Arabic</h2>
+                    <div class="reading-container">
+                        <div class="place-values">
+                            <h3>Place Values</h3>
+                            <table class="place-table">
+                                <tr>
+                                    <th>Thousands</th>
+                                    <th>Hundreds</th>
+                                    <th>Tens</th>
+                                    <th>Ones</th>
+                                </tr>
+                                <tr>
+                                    <td>آلاف</td>
+                                    <td>مئات</td>
+                                    <td>عشرات</td>
+                                    <td>آحاد</td>
+                                </tr>
+                                <tr>
+                                    <td>alaaf</td>
+                                    <td>mi'aat</td>
+                                    <td>asharat</td>
+                                    <td>ahaad</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="number-reader">
+                            <h3>Number Reader</h3>
+                            <input type="number" id="read-number" placeholder="Enter number (1-9999)" max="9999" oninput="readArabicNumber()">
+                            <div class="reading-display">
+                                <div class="arabic-digits" id="arabic-digits">٠</div>
+                                <div class="arabic-words" id="arabic-words">-</div>
+                                <div class="english-trans" id="english-trans">-</div>
+                            </div>
+                        </div>
+                        
+                        <div class="common-numbers">
+                            <h3>Common Numbers</h3>
+                            <div class="numbers-grid">
+                                <div class="num-card" onclick="showNumber(20)">
+                                    <div>20</div>
+                                    <div>٢٠</div>
+                                    <div>عشرون</div>
+                                    <div>ishrun</div>
+                                </div>
+                                <div class="num-card" onclick="showNumber(50)">
+                                    <div>50</div>
+                                    <div>٥٠</div>
+                                    <div>خمسون</div>
+                                    <div>khamsun</div>
+                                </div>
+                                <div class="num-card" onclick="showNumber(100)">
+                                    <div>100</div>
+                                    <div>١٠٠</div>
+                                    <div>مائة</div>
+                                    <div>mi'a</div>
+                                </div>
+                                <div class="num-card" onclick="showNumber(1000)">
+                                    <div>1000</div>
+                                    <div>١٠٠٠</div>
+                                    <div>ألف</div>
+                                    <div>alf</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Money Mode -->
+                <div id="money-mode" class="arabic-mode-content">
+                    <h2>Arabic Money & Currency</h2>
+                    <div class="money-container">
+                        <div class="currency-info">
+                            <h3>Common Arab Currencies</h3>
+                            <table class="currency-table">
+                                <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>Currency</th>
+                                        <th>Arabic</th>
+                                        <th>Symbol</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Saudi Arabia</td>
+                                        <td>Riyal</td>
+                                        <td>ريال</td>
+                                        <td>﷼</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UAE</td>
+                                        <td>Dirham</td>
+                                        <td>درهم</td>
+                                        <td>د.إ</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Egypt</td>
+                                        <td>Pound</td>
+                                        <td>جنيه</td>
+                                        <td>£E</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jordan</td>
+                                        <td>Dinar</td>
+                                        <td>دينار</td>
+                                        <td>JD</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="money-practice">
+                            <h3>Money Calculator</h3>
+                            <div class="price-display">
+                                <label>Price in Riyals:</label>
+                                <input type="number" id="price-input" placeholder="Enter price" oninput="convertPrice()">
+                                <div class="price-arabic">
+                                    <span id="price-arabic">٠</span> <span>﷼</span>
+                                </div>
+                                <div class="price-words" id="price-words">صفر ريال</div>
+                            </div>
+                            
+                            <div class="money-problems">
+                                <h4>Shopping Practice</h4>
+                                <div class="shopping-item">
+                                    <span class="item-icon">🍎</span>
+                                    <div>التفاح (Apples)</div>
+                                    <div class="price">٥ ﷼</div>
+                                </div>
+                                <div class="shopping-item">
+                                    <span class="item-icon">📚</span>
+                                    <div>كتاب (Book)</div>
+                                    <div class="price">٢٥ ﷼</div>
+                                </div>
+                                <div class="shopping-item">
+                                    <span class="item-icon">🥤</span>
+                                    <div>عصير (Juice)</div>
+                                    <div class="price">٣ ﷼</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Practice Mode -->
+                <div id="practice-mode" class="arabic-mode-content">
+                    <h2>Practice Arabic Numbers</h2>
+                    <div class="practice-container">
+                        <div class="practice-selector">
+                            <button class="practice-btn active" onclick="setPracticeType('match')">Number Matching</button>
+                            <button class="practice-btn" onclick="setPracticeType('write')">Write Numbers</button>
+                            <button class="practice-btn" onclick="setPracticeType('calculate')">Calculate</button>
+                        </div>
+                        
+                        <div id="match-practice" class="practice-type active">
+                            <h3>Match the Numbers</h3>
+                            <div class="match-game">
+                                <div class="match-question">
+                                    <span class="arabic-large" id="match-arabic">٤٧</span>
+                                </div>
+                                <div class="match-options">
+                                    <button onclick="checkMatch(38)">38</button>
+                                    <button onclick="checkMatch(47)">47</button>
+                                    <button onclick="checkMatch(74)">74</button>
+                                    <button onclick="checkMatch(84)">84</button>
+                                </div>
+                                <div id="match-feedback"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="write-practice" class="practice-type">
+                            <h3>Write in Arabic</h3>
+                            <div class="write-game">
+                                <div class="write-prompt">
+                                    Write <span id="write-number">25</span> in Arabic numerals:
+                                </div>
+                                <input type="text" id="write-input" placeholder="Type Arabic numbers">
+                                <button onclick="checkWrite()">Check</button>
+                                <div id="write-feedback"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="calculate-practice" class="practice-type">
+                            <h3>Calculate in Arabic</h3>
+                            <div class="calc-game">
+                                <div class="calc-equation">
+                                    <span>٨ + ٦ = </span>
+                                    <input type="number" id="calc-answer" placeholder="?">
+                                </div>
+                                <button onclick="checkCalc()">Check</button>
+                                <div id="calc-feedback"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="score-tracker">
+                            <h4>Your Progress</h4>
+                            <div class="score-display">
+                                Score: <span id="practice-score">0</span> / <span id="practice-total">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- End of Islamic Tool Modes -->
+        </div>
+    </div>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Islamic Tool Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .result-box {
+            background: #f0f0f0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .info { color: blue; }
+    </style>
+</head>
+<body>
+    <h1>Islamic Mathematics Tool Debugger</h1>
+    
+    <div>
+        <button onclick="checkToolExists()">1. Check Tool Exists</button>
+        <button onclick="checkStyles()">2. Check Styles</button>
+        <button onclick="tryActivate()">3. Try Activate Tool</button>
+        <button onclick="checkButton()">4. Check Button</button>
+        <button onclick="fullDiagnostic()">5. Full Diagnostic</button>
+    </div>
+    
+    <div id="result" class="result-box">Results will appear here...</div>
+    
+    <h2>Live Site:</h2>
+    <iframe id="testFrame" src="index.html" style="width: 100%; height: 600px; border: 2px solid #333;"></iframe>
+    
+    <script>
+        function log(message, type = 'info') {
+            const result = document.getElementById('result');
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : 'info';
+            result.innerHTML += `<span class="${className}">${message}</span>\n`;
+        }
+        
+        function clear() {
+            document.getElementById('result').innerHTML = '';
+        }
+        
+        function getIframeWindow() {
+            return document.getElementById('testFrame').contentWindow;
+        }
+        
+        function getIframeDocument() {
+            return document.getElementById('testFrame').contentDocument || getIframeWindow().document;
+        }
+        
+        function checkToolExists() {
+            clear();
+            log("=== Checking if Islamic Tool Exists ===");
+            
+            const doc = getIframeDocument();
+            const tool = doc.getElementById('islamicmath-tool');
+            
+            if (tool) {
+                log("✓ Tool found with ID: islamicmath-tool", 'success');
+                log("  Classes: " + tool.className);
+                log("  Display style: " + tool.style.display);
+                log("  Computed display: " + getIframeWindow().getComputedStyle(tool).display);
+                log("  Visibility: " + getIframeWindow().getComputedStyle(tool).visibility);
+                log("  Position: " + getIframeWindow().getComputedStyle(tool).position);
+                log("  Opacity: " + getIframeWindow().getComputedStyle(tool).opacity);
+                log("  Z-index: " + getIframeWindow().getComputedStyle(tool).zIndex);
+                
+                // Check children
+                const container = tool.querySelector('.islamic-container');
+                if (container) {
+                    log("✓ Container found", 'success');
+                    const tabs = container.querySelector('.arabic-tabs');
+                    if (tabs) {
+                        log("✓ Tabs found", 'success');
+                    } else {
+                        log("✗ Tabs NOT found", 'error');
+                    }
+                } else {
+                    log("✗ Container NOT found", 'error');
+                }
+            } else {
+                log("✗ Tool NOT found!", 'error');
+            }
+        }
+        
+        function checkStyles() {
+            clear();
+            log("=== Checking Styles ===");
+            
+            const win = getIframeWindow();
+            const doc = getIframeDocument();
+            
+            // Check for critical CSS rules
+            const styleSheets = doc.styleSheets;
+            let found = {
+                toolBase: false,
+                toolActive: false,
+                arabicTabs: false,
+                lessonSection: false
+            };
+            
+            for (let sheet of styleSheets) {
+                try {
+                    const rules = sheet.cssRules || sheet.rules;
+                    for (let rule of rules) {
+                        if (rule.selectorText) {
+                            if (rule.selectorText.includes('#islamicmath-tool')) {
+                                found.toolBase = true;
+                                log("Found rule: " + rule.selectorText);
+                            }
+                            if (rule.selectorText.includes('#islamicmath-tool.active')) {
+                                found.toolActive = true;
+                                log("Found active rule: " + rule.selectorText);
+                            }
+                            if (rule.selectorText.includes('.arabic-tabs')) {
+                                found.arabicTabs = true;
+                            }
+                            if (rule.selectorText.includes('.lesson-section')) {
+                                found.lessonSection = true;
+                            }
+                        }
+                    }
+                } catch (e) {
+                    // Cross-origin or other access issues
+                }
+            }
+            
+            log("\nStyle Check Results:");
+            log(found.toolBase ? "✓ Base tool styles found" : "✗ Base tool styles NOT found", found.toolBase ? 'success' : 'error');
+            log(found.toolActive ? "✓ Active tool styles found" : "✗ Active tool styles NOT found", found.toolActive ? 'success' : 'error');
+            log(found.arabicTabs ? "✓ Arabic tabs styles found" : "✗ Arabic tabs styles NOT found", found.arabicTabs ? 'success' : 'error');
+            log(found.lessonSection ? "✓ Lesson section styles found" : "✗ Lesson section styles NOT found", found.lessonSection ? 'success' : 'error');
+        }
+        
+        function tryActivate() {
+            clear();
+            log("=== Trying to Activate Tool ===");
+            
+            const win = getIframeWindow();
+            const doc = getIframeDocument();
+            const tool = doc.getElementById('islamicmath-tool');
+            
+            if (!tool) {
+                log("✗ Tool not found!", 'error');
+                return;
+            }
+            
+            log("Before activation:");
+            log("  Classes: " + tool.className);
+            log("  Display: " + win.getComputedStyle(tool).display);
+            
+            // Method 1: Using switchTool function
+            if (win.switchTool) {
+                log("\nCalling switchTool('islamicmath')...");
+                win.switchTool('islamicmath');
+                
+                setTimeout(() => {
+                    log("After switchTool:");
+                    log("  Classes: " + tool.className);
+                    log("  Display: " + win.getComputedStyle(tool).display);
+                    
+                    if (tool.classList.contains('active')) {
+                        log("✓ Tool is active!", 'success');
+                    } else {
+                        log("✗ Tool is NOT active", 'error');
+                    }
+                }, 100);
+            } else {
+                log("✗ switchTool function not found!", 'error');
+                
+                // Method 2: Direct activation
+                log("\nTrying direct activation...");
+                tool.classList.add('active');
+                tool.style.display = 'block';
+                
+                log("After direct activation:");
+                log("  Classes: " + tool.className);
+                log("  Display: " + tool.style.display);
+            }
+        }
+        
+        function checkButton() {
+            clear();
+            log("=== Checking Islamic Mathematics Button ===");
+            
+            const doc = getIframeDocument();
+            const buttons = doc.querySelectorAll('button');
+            let found = false;
+            
+            for (let btn of buttons) {
+                if (btn.textContent.includes('Islamic Mathematics')) {
+                    found = true;
+                    log("✓ Button found: " + btn.textContent, 'success');
+                    log("  onclick: " + btn.getAttribute('onclick'));
+                    log("  Classes: " + btn.className);
+                    
+                    // Try clicking it
+                    log("\nClicking button...");
+                    btn.click();
+                    
+                    setTimeout(() => {
+                        const tool = doc.getElementById('islamicmath-tool');
+                        if (tool && tool.classList.contains('active')) {
+                            log("✓ Tool activated by button click!", 'success');
+                        } else {
+                            log("✗ Tool NOT activated by button click", 'error');
+                        }
+                    }, 100);
+                    break;
+                }
+            }
+            
+            if (!found) {
+                log("✗ Islamic Mathematics button NOT found!", 'error');
+            }
+        }
+        
+        function fullDiagnostic() {
+            clear();
+            log("=== FULL DIAGNOSTIC ===\n");
+            
+            const win = getIframeWindow();
+            const doc = getIframeDocument();
+            
+            // 1. Check all tools
+            log("All tool-content elements:");
+            const tools = doc.querySelectorAll('.tool-content');
+            tools.forEach(tool => {
+                const display = win.getComputedStyle(tool).display;
+                const active = tool.classList.contains('active');
+                log(`  ${tool.id}: display=${display}, active=${active}`);
+            });
+            
+            // 2. Check Islamic tool specifically
+            log("\nIslamic Tool Details:");
+            const islamicTool = doc.getElementById('islamicmath-tool');
+            if (islamicTool) {
+                log("✓ Tool exists", 'success');
+                
+                // Check computed styles
+                const styles = win.getComputedStyle(islamicTool);
+                log("Computed Styles:");
+                log("  display: " + styles.display);
+                log("  visibility: " + styles.visibility);
+                log("  opacity: " + styles.opacity);
+                log("  position: " + styles.position);
+                log("  width: " + styles.width);
+                log("  height: " + styles.height);
+                log("  overflow: " + styles.overflow);
+                
+                // Check parent elements
+                log("\nParent Chain:");
+                let parent = islamicTool.parentElement;
+                let level = 1;
+                while (parent && parent !== doc.body) {
+                    const pStyles = win.getComputedStyle(parent);
+                    log(`  Level ${level}: ${parent.tagName}${parent.id ? '#' + parent.id : ''}`);
+                    log(`    display: ${pStyles.display}, visibility: ${pStyles.visibility}`);
+                    parent = parent.parentElement;
+                    level++;
+                }
+                
+                // Check for showLesson function
+                log("\nJavaScript Functions:");
+                log(win.showLesson ? "✓ showLesson exists" : "✗ showLesson NOT found", win.showLesson ? 'success' : 'error');
+                log(win.switchTool ? "✓ switchTool exists" : "✗ switchTool NOT found", win.switchTool ? 'success' : 'error');
+                
+            } else {
+                log("✗ Islamic tool NOT found!", 'error');
+            }
+        }
+    </script>
+</body>
+</html>

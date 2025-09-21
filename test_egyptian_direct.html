@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Egyptian Tool Directly</title>
+    <style>
+        .hidden { display: none; }
+        .visible { display: block !important; }
+    </style>
+</head>
+<body>
+    <h1>Direct Egyptian Tool Test</h1>
+    <button onclick="showEgyptian()">Show Egyptian Tool</button>
+    <button onclick="debugEgyptian()">Debug Info</button>
+    <div id="debug"></div>
+    
+    <iframe id="testFrame" src="index.html" style="width: 100%; height: 600px; margin-top: 20px;"></iframe>
+    
+    <script>
+        function showEgyptian() {
+            const iframe = document.getElementById('testFrame');
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            
+            // Hide all tools
+            const allTools = iframeDoc.querySelectorAll('.tool-content');
+            allTools.forEach(tool => {
+                tool.classList.remove('active');
+                tool.style.display = 'none';
+            });
+            
+            // Show Egyptian tool
+            const egyptianTool = iframeDoc.getElementById('egyptianmath-tool');
+            if (egyptianTool) {
+                egyptianTool.style.display = 'block !important';
+                egyptianTool.classList.add('active');
+                egyptianTool.style.visibility = 'visible';
+                egyptianTool.style.opacity = '1';
+                
+                alert('Egyptian tool forced to display. Check if you can see it now.');
+            } else {
+                alert('Egyptian tool not found!');
+            }
+        }
+        
+        function debugEgyptian() {
+            const iframe = document.getElementById('testFrame');
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const egyptianTool = iframeDoc.getElementById('egyptianmath-tool');
+            const debug = document.getElementById('debug');
+            
+            if (egyptianTool) {
+                const computed = iframe.contentWindow.getComputedStyle(egyptianTool);
+                debug.innerHTML = `
+                    <h3>Egyptian Tool Debug Info:</h3>
+                    <p>Found: Yes</p>
+                    <p>Classes: ${egyptianTool.className}</p>
+                    <p>Display: ${computed.display}</p>
+                    <p>Visibility: ${computed.visibility}</p>
+                    <p>Opacity: ${computed.opacity}</p>
+                    <p>Width: ${computed.width}</p>
+                    <p>Height: ${computed.height}</p>
+                    <p>Position: ${computed.position}</p>
+                    <p>Z-Index: ${computed.zIndex}</p>
+                    <p>Overflow: ${computed.overflow}</p>
+                    <p>Inner HTML length: ${egyptianTool.innerHTML.length}</p>
+                    <p>Has .egyptian-container: ${egyptianTool.querySelector('.egyptian-container') ? 'Yes' : 'No'}</p>
+                `;
+                
+                // Check if parent has display issues
+                let parent = egyptianTool.parentElement;
+                let parentInfo = '<h4>Parent Chain:</h4>';
+                while (parent && parent.tagName !== 'BODY') {
+                    const parentComputed = iframe.contentWindow.getComputedStyle(parent);
+                    parentInfo += `<p>${parent.tagName}.${parent.className}: display=${parentComputed.display}, visibility=${parentComputed.visibility}</p>`;
+                    parent = parent.parentElement;
+                }
+                debug.innerHTML += parentInfo;
+            } else {
+                debug.innerHTML = '<p>Egyptian tool not found!</p>';
+            }
+        }
+    </script>
+</body>
+</html>

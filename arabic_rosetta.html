@@ -1,0 +1,339 @@
+    <!-- Islamic Mathematics Tool -->
+    <div id="islamicmath-tool" class="tool-content">
+        <div class="islamic-container">
+            <div class="islamic-header">
+                <h1>Learn Arabic Numbers</h1>
+                <p>A visual journey through Arabic numerals</p>
+            </div>
+            
+            <!-- Learning Progress Bar -->
+            <div class="learning-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="progress-stages">
+                    <span class="stage active" data-stage="1">Recognition</span>
+                    <span class="stage" data-stage="2">Association</span>
+                    <span class="stage" data-stage="3">Context</span>
+                    <span class="stage" data-stage="4">Application</span>
+                    <span class="stage" data-stage="5">Mastery</span>
+                </div>
+            </div>
+            
+            <!-- Main Learning Area -->
+            <div class="rosetta-learning-area">
+                
+                <!-- Stage 1: Visual Recognition -->
+                <div id="stage-recognition" class="learning-stage active">
+                    <h2>Stage 1: Visual Recognition</h2>
+                    <p class="stage-instruction">Look at the number. Listen. Observe the shape.</p>
+                    
+                    <div class="number-presentation">
+                        <div class="visual-number-card" id="current-number-card">
+                            <div class="number-visual">
+                                <div class="quantity-dots" id="quantity-dots">
+                                    <span class="dot"></span>
+                                </div>
+                                <div class="arabic-numeral-large">١</div>
+                                <div class="western-numeral">1</div>
+                            </div>
+                            <button class="sound-btn" onclick="playNumberSound(1)">🔊</button>
+                        </div>
+                        
+                        <div class="number-navigation">
+                            <button onclick="previousNumber()" class="nav-btn">←</button>
+                            <div class="number-selector">
+                                <span class="num-dot active" data-num="0"></span>
+                                <span class="num-dot" data-num="1"></span>
+                                <span class="num-dot" data-num="2"></span>
+                                <span class="num-dot" data-num="3"></span>
+                                <span class="num-dot" data-num="4"></span>
+                                <span class="num-dot" data-num="5"></span>
+                                <span class="num-dot" data-num="6"></span>
+                                <span class="num-dot" data-num="7"></span>
+                                <span class="num-dot" data-num="8"></span>
+                                <span class="num-dot" data-num="9"></span>
+                            </div>
+                            <button onclick="nextNumber()" class="nav-btn">→</button>
+                        </div>
+                    </div>
+                    
+                    <button class="continue-btn" onclick="checkStageProgress()">Continue →</button>
+                </div>
+                
+                <!-- Stage 2: Association -->
+                <div id="stage-association" class="learning-stage">
+                    <h2>Stage 2: Visual Association</h2>
+                    <p class="stage-instruction">Match the Arabic numeral with the quantity</p>
+                    
+                    <div class="association-exercise">
+                        <div class="arabic-prompt">
+                            <span id="arabic-to-match">٣</span>
+                        </div>
+                        
+                        <div class="quantity-options">
+                            <div class="qty-option" onclick="checkQuantity(2)" data-qty="2">
+                                <div class="dots-container">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                            <div class="qty-option" onclick="checkQuantity(3)" data-qty="3">
+                                <div class="dots-container">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                            <div class="qty-option" onclick="checkQuantity(5)" data-qty="5">
+                                <div class="dots-container">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                            <div class="qty-option" onclick="checkQuantity(4)" data-qty="4">
+                                <div class="dots-container">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feedback-area" id="association-feedback"></div>
+                    </div>
+                    
+                    <div class="progress-tracker">
+                        <span class="completed">✓</span>
+                        <span class="completed">✓</span>
+                        <span class="current">●</span>
+                        <span>○</span>
+                        <span>○</span>
+                    </div>
+                </div>
+                
+                <!-- Stage 3: Contextual Learning -->
+                <div id="stage-context" class="learning-stage">
+                    <h2>Stage 3: Real World Context</h2>
+                    <p class="stage-instruction">See how numbers are used in daily life</p>
+                    
+                    <div class="context-scenarios">
+                        <div class="scenario-card active">
+                            <div class="scenario-image">
+                                <div class="fruit-stand">
+                                    <div class="fruit-group">
+                                        🍎🍎🍎
+                                    </div>
+                                    <div class="price-tag">
+                                        <span class="arabic-price">٣</span>
+                                        <span class="currency">﷼</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scenario-question">
+                                How many apples?
+                                <div class="answer-options">
+                                    <button onclick="checkContext(2)">٢</button>
+                                    <button onclick="checkContext(3)">٣</button>
+                                    <button onclick="checkContext(4)">٤</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="scenario-card">
+                            <div class="scenario-image">
+                                <div class="clock-display">
+                                    <svg width="150" height="150">
+                                        <circle cx="75" cy="75" r="70" fill="white" stroke="#333" stroke-width="2"/>
+                                        <line x1="75" y1="75" x2="75" y2="25" stroke="#333" stroke-width="3"/>
+                                        <line x1="75" y1="75" x2="110" y2="75" stroke="#333" stroke-width="2"/>
+                                        <text x="75" y="20" text-anchor="middle" font-size="16">١٢</text>
+                                        <text x="130" y="80" text-anchor="middle" font-size="16">٣</text>
+                                        <text x="75" y="140" text-anchor="middle" font-size="16">٦</text>
+                                        <text x="20" y="80" text-anchor="middle" font-size="16">٩</text>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="scenario-question">
+                                What time is it?
+                                <div class="answer-options">
+                                    <button onclick="checkContext('3:00')">٣:٠٠</button>
+                                    <button onclick="checkContext('12:15')">١٢:١٥</button>
+                                    <button onclick="checkContext('6:30')">٦:٣٠</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="scenario-navigator">
+                        <button onclick="previousScenario()">←</button>
+                        <span class="scenario-counter">1 / 5</span>
+                        <button onclick="nextScenario()">→</button>
+                    </div>
+                </div>
+                
+                <!-- Stage 4: Application -->
+                <div id="stage-application" class="learning-stage">
+                    <h2>Stage 4: Build Understanding</h2>
+                    <p class="stage-instruction">Construct numbers by combining digits</p>
+                    
+                    <div class="number-builder">
+                        <div class="target-number">
+                            <p>Build this number:</p>
+                            <div class="target-display">25</div>
+                        </div>
+                        
+                        <div class="building-area">
+                            <div class="tens-place dropzone" id="tens-drop">
+                                <span class="place-label">Tens</span>
+                                <div class="dropped-number"></div>
+                            </div>
+                            <div class="ones-place dropzone" id="ones-drop">
+                                <span class="place-label">Ones</span>
+                                <div class="dropped-number"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="number-palette">
+                            <div class="draggable-number" draggable="true" data-value="0">٠</div>
+                            <div class="draggable-number" draggable="true" data-value="1">١</div>
+                            <div class="draggable-number" draggable="true" data-value="2">٢</div>
+                            <div class="draggable-number" draggable="true" data-value="3">٣</div>
+                            <div class="draggable-number" draggable="true" data-value="4">٤</div>
+                            <div class="draggable-number" draggable="true" data-value="5">٥</div>
+                            <div class="draggable-number" draggable="true" data-value="6">٦</div>
+                            <div class="draggable-number" draggable="true" data-value="7">٧</div>
+                            <div class="draggable-number" draggable="true" data-value="8">٨</div>
+                            <div class="draggable-number" draggable="true" data-value="9">٩</div>
+                        </div>
+                        
+                        <button class="check-btn" onclick="checkBuiltNumber()">Check</button>
+                        <div id="builder-feedback"></div>
+                    </div>
+                </div>
+                
+                <!-- Stage 5: Mastery -->
+                <div id="stage-mastery" class="learning-stage">
+                    <h2>Stage 5: Demonstrate Mastery</h2>
+                    <p class="stage-instruction">Complete real-world tasks using Arabic numbers</p>
+                    
+                    <div class="mastery-challenges">
+                        <div class="challenge-card active">
+                            <h3>Shopping Challenge</h3>
+                            <div class="shop-items">
+                                <div class="shop-item">
+                                    <span class="item">📚</span>
+                                    <span class="item-price">١٥ ﷼</span>
+                                </div>
+                                <div class="shop-item">
+                                    <span class="item">✏️</span>
+                                    <span class="item-price">٣ ﷼</span>
+                                </div>
+                                <div class="shop-item">
+                                    <span class="item">🎨</span>
+                                    <span class="item-price">٧ ﷼</span>
+                                </div>
+                            </div>
+                            <div class="challenge-question">
+                                <p>Total cost for all items?</p>
+                                <input type="text" id="total-answer" placeholder="Type in Arabic numerals">
+                                <button onclick="checkTotal()">Submit</button>
+                            </div>
+                        </div>
+                        
+                        <div class="challenge-card">
+                            <h3>Phone Number Challenge</h3>
+                            <div class="phone-display">
+                                <p>Write this phone number in Arabic:</p>
+                                <div class="western-phone">05-234-7891</div>
+                                <input type="text" id="phone-answer" placeholder="٠٥-٢٣٤-٧٨٩١">
+                                <button onclick="checkPhone()">Submit</button>
+                            </div>
+                        </div>
+                        
+                        <div class="challenge-card">
+                            <h3>Math Challenge</h3>
+                            <div class="math-problem">
+                                <span class="problem">٨ + ٦ = ?</span>
+                                <input type="text" id="math-answer" placeholder="Answer in Arabic">
+                                <button onclick="checkMath()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mastery-progress">
+                        <div class="stars">
+                            <span class="star earned">⭐</span>
+                            <span class="star earned">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="mastery-status">2 of 3 challenges completed</p>
+                    </div>
+                </div>
+                
+                <!-- Completion Certificate -->
+                <div id="completion-certificate" class="learning-stage">
+                    <div class="certificate">
+                        <h1>🏆 Certificate of Achievement</h1>
+                        <p class="cert-text">Congratulations! You have mastered</p>
+                        <h2>Arabic Numbers 0-9</h2>
+                        <div class="mastered-numbers">
+                            <span>٠</span><span>١</span><span>٢</span><span>٣</span><span>٤</span>
+                            <span>٥</span><span>٦</span><span>٧</span><span>٨</span><span>٩</span>
+                        </div>
+                        <div class="achievement-badges">
+                            <div class="badge">
+                                <span class="badge-icon">👁️</span>
+                                <span class="badge-text">Visual Recognition</span>
+                            </div>
+                            <div class="badge">
+                                <span class="badge-icon">🔗</span>
+                                <span class="badge-text">Association</span>
+                            </div>
+                            <div class="badge">
+                                <span class="badge-icon">🌍</span>
+                                <span class="badge-text">Context</span>
+                            </div>
+                            <div class="badge">
+                                <span class="badge-icon">🔧</span>
+                                <span class="badge-text">Application</span>
+                            </div>
+                            <div class="badge">
+                                <span class="badge-icon">⭐</span>
+                                <span class="badge-text">Mastery</span>
+                            </div>
+                        </div>
+                        <button class="restart-btn" onclick="restartLearning()">Learn More Numbers →</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Learning Dashboard -->
+            <div class="learning-dashboard">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <span class="stat-label">Numbers Learned</span>
+                        <span class="stat-value" id="numbers-learned">0/10</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Current Stage</span>
+                        <span class="stat-value" id="current-stage">Recognition</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Accuracy</span>
+                        <span class="stat-value" id="accuracy">100%</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Time Spent</span>
+                        <span class="stat-value" id="time-spent">0:00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- End of Islamic Tool Modes -->
+        </div>
+    </div>
